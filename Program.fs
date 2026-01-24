@@ -1,11 +1,34 @@
-﻿namespace TurtleGeometry
+﻿module TurtleGeometry.Program
+open Microsoft.AspNetCore.Builder
+open Microsoft.AspNetCore.Hosting
+open Giraffe
+open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.Hosting
+open Giraffe.ViewEngine
 
-module Program = 
-    open System
-    open Microsoft.AspNetCore.Builder
 
-    let builder = WebApplication.CreateBuilder()
-    let app = builder.Build()
-    app.MapGet("/", Func<string>(fun () -> $"Welcome to workshop")) |> ignore
-    app.Run()
+let webApp =
+    choose [
+        route "/" >=> htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage (Paths.webPagePath ())))]
+
+let configureApp (app : IApplicationBuilder) =
+    // Add Giraffe to the ASP.NET Core pipeline
+    app.UseGiraffe webApp
+
+let configureServices (services : IServiceCollection) =
+    // Add Giraffe dependencies
+    services.AddGiraffe() |> ignore
+
+[<EntryPoint>]
+let main _ =
+    Host.CreateDefaultBuilder()
+        .ConfigureWebHostDefaults(
+            fun webHostBuilder ->
+                webHostBuilder
+                    .Configure(configureApp)
+                    .ConfigureServices(configureServices)
+                    |> ignore)
+        .Build()
+        .Run()
+    0
 
