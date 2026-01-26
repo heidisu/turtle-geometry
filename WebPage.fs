@@ -4,16 +4,6 @@ open Giraffe.ViewEngine
 open TurtleGeometry.Domain
 open System
 
-let xMax = 10.0
-let yMax = 10.0
-let xMin = -20.0
-let yMin = -10.0
-
-let mino = min xMin yMin
-let maxo = max xMax yMax
-let size = maxo - mino
-
-
 let svg width height path (xMin, xMax, yMin, yMax) = 
     let size = max (xMax - xMin) (yMax - yMin)
     let strokeWidth = 2
@@ -33,7 +23,7 @@ let rec calculatePath (x, y) (dx, dy) svgPath xVals yVals turtlePath=
             let afloat = float a
             let factor = sqrt (afloat * afloat /(dx * dx + dy * dy))
             let newX, newY = (x + factor * dx, y + factor * dy)
-            let newPath = svgPath + $" L{int <| Math.Round newX},{int <| Math.Round newY}"
+            let newPath = svgPath + $" L{newX},{newY}"
             printfn $"{a} ({x}, {y}) ({newX},{newY})"
             calculatePath (newX, newY) (dx, dy) newPath (newX :: xVals) (newY :: yVals) xs
         | Right a -> 
