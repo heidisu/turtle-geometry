@@ -13,4 +13,5 @@ let square = [
     Right 90
 ]
 
-let webPagePath () = square
+// the turtle commands used to create svg on web page
+let webPagePath = square

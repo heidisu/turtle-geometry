@@ -9,7 +9,7 @@ open Giraffe.ViewEngine
 
 let webApp =
     choose [
-        route "/" >=> htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage (Paths.webPagePath ())))]
+        route "/" >=> htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage Paths.webPagePath))]
 
 let configureApp (app : IApplicationBuilder) =
     app.UseGiraffe webApp
