@@ -4,12 +4,15 @@ open Giraffe.ViewEngine
 open TurtleGeometry.Domain
 open System
 
+
+let color = "#5d009b"
+
 let svg width height path (xMin, xMax, yMin, yMax) = 
     let size = max (xMax - xMin) (yMax - yMin)
     let strokeWidth = 2
     $"""
-    <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{xMin - strokeWidth},{yMin - strokeWidth},{size + 2 * strokeWidth},{size + 2 * strokeWidth}">
-        <path stroke="black" stroke-width="{strokeWidth}" fill="white" vector-effect="non-scaling-stroke" d="{path}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height - strokeWidth}" viewBox="{xMin - strokeWidth},{yMin - strokeWidth},{size + 2 * strokeWidth},{size + 2 * strokeWidth}">
+        <path stroke="{color}" stroke-width="{strokeWidth}" fill="white" vector-effect="non-scaling-stroke" d="{path}">
         </path>
     </svg>
 """
@@ -24,7 +27,6 @@ let rec calculatePath (x, y) (dx, dy) svgPath xVals yVals turtlePath=
             let factor = sqrt (afloat * afloat /(dx * dx + dy * dy))
             let newX, newY = (x + factor * dx, y + factor * dy)
             let newPath = svgPath + $" L{newX},{newY}"
-            printfn $"{a} ({x}, {y}) ({newX},{newY})"
             calculatePath (newX, newY) (dx, dy) newPath (newX :: xVals) (newY :: yVals) xs
         | Right a -> 
             let phi = atan2 dy dx
@@ -43,13 +45,14 @@ let turtleToSvgPath turtlePath =
 
 let htmlPage turtlePath = 
     let path, viewBox = turtleToSvgPath turtlePath
-    printfn $"{path} {viewBox}"
     html [] [
         head [] [
             title [] [ str "Turtle Geometry" ]
         ]
         body [] [
-            h1 [] [ str "Turtle Geometry" ]
-            div [] [rawText (svg 500 500 path viewBox)]
+            div [attr "align" "center"] [
+                h1 [attr "style" $"color: {color}"] [ str "Turtle Geometry" ]
+                div [] [rawText (svg 450 450 path viewBox)]
+            ]
         ]
     ]
