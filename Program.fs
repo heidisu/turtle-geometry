@@ -12,11 +12,9 @@ let webApp =
         route "/" >=> htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage (Paths.webPagePath ())))]
 
 let configureApp (app : IApplicationBuilder) =
-    // Add Giraffe to the ASP.NET Core pipeline
     app.UseGiraffe webApp
 
 let configureServices (services : IServiceCollection) =
-    // Add Giraffe dependencies
     services.AddGiraffe() |> ignore
 
 [<EntryPoint>]
