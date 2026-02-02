@@ -16,10 +16,9 @@ Make sure you have .NET 10 SDK installed by running `dotnet --version` in the te
 
 ### Alternative ways of running the code
 
-#### Running devcontainer in codespaces
+There is setup for devcontainer, which can be run from GitHub, using GitHub Codespaces, or locally from an IDE like VS Code. 
 
-This allows you to work in the browser using GitHub Codespaces
+## What is a turtle?
 
-#### Running devcontainer locally
+## 
 
-This is using docker locally to create a dev environment. Something in between the other two options, convenient if docker is set up properly, fiddly if not.
