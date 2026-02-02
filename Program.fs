@@ -25,6 +25,7 @@ let main _ =
                 webHostBuilder
                     .Configure(configureApp)
                     .ConfigureServices(configureServices)
+                    .UseUrls("http://localhost:5000")
                     |> ignore)
         .Build()
         .Run()

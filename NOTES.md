@@ -8,6 +8,15 @@
 * Collection of other turtles
 * 
 
+## F# intro
+* innrykksbasert
+* rekkefølge
+* let
+* function
+* liste
+* pipe
+
+
 ## 2026-01-24
 
 ```
@@ -26,3 +35,5 @@ dotnet add package Giraffe.ViewEngine
 * manipulere på lista, så sammen
 * functional core imperativ (turtle) shell 
 * firkant -> trekant -> hvordan lage n kant
+
+

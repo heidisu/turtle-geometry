@@ -25,3 +25,4 @@ nupkg/
 [Oo]bj/
 [Oo]ut/
 
+.fake

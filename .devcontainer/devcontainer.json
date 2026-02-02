@@ -3,13 +3,13 @@
     "dockerfile": "DOCKERFILE"
   },
   "forwardPorts": [
-    5432
+    5000
   ],
   "postCreateCommand": "dotnet restore",
   "customizations": {
     "vscode": {
       "extensions": [
-        "hbenl.vscode-test-explorer"
+        "Ionide.Ionide-fsharp"
       ]
     }
   }
