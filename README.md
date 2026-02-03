@@ -1,5 +1,7 @@
 # 🐢 Fun with F# and turtle geometry
 
+The content of the workshop is based on content from the first two chapters of [Turtle Geometry: The Computer as a Medium for Exploring Mathematics](https://direct.mit.edu/books/oa-monograph/4663/Turtle-GeometryThe-Computer-as-a-Medium-for) by Harold Abelson and Andrea diSessa.
+
 **🚧 Under construction 🚧**
 
 Getting ready for [Booster 2026](https://www.boosterconf.no/2026/program/wednesday/9_short_talks_and_workshops/dreggen_4/fun-with-f-and-turtle-geometry/)
@@ -16,9 +18,13 @@ Make sure you have .NET 10 SDK installed by running `dotnet --version` in the te
 
 ### Alternative ways of running the code
 
-There is setup for devcontainer, which can be run from GitHub, using GitHub Codespaces, or locally from an IDE like VS Code. 
+There is setup for devcontainer, which can be used to work with the code on GitHub, using GitHub Codespaces, or locally from an IDE like VS Code. 
 
-## What is a turtle?
+## 🐢 What is a turtle?
 
-## 
+## 🟥 Polygons
+
+## 🟣 Circles
+
+## More recursion
 
