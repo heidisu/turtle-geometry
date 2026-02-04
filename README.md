@@ -22,6 +22,9 @@ There is setup for devcontainer, which can be used to work with the code on GitH
 
 ## 🐢 What is a turtle?
 
+A turtle is a small animal moving around in a plane. The turtle doesn't move randomly, instead it responds to commands. The four simple commmands we will be using are `Forward`, `Left`, `Right`and `Back`. They all take an integer as input, for forward and back the integer is the distance the turtle should move, for left and right, it is the degrees the turtle should rotate. The forward command will cause the turtle to leave a trace the distance it moved, while back does not. Forward and back change the turtles position, while left and rich change the direction of the turtle.
+In our program we will be most interested in the commands, and less interested in how the turtle executes them. We will create lists of  `TurtleCommands` which each are a complete set of commands the turtle need in order to create a specific path. 
+
 ## 🟥 Polygons
 
 ## 🟣 Circles
