@@ -1,6 +1,9 @@
-module TurtleGeometry.Paths
+module TurtleGeometry.Core
 
-open TurtleGeometry.Domain
+type TurtleCommmand = 
+    | Forward of int
+    | Right of int
+    | Left of int
 
 let square = [
     Forward 20

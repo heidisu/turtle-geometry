@@ -1,7 +1,7 @@
 module TurtleGeometry.WebPage
 
 open Giraffe.ViewEngine
-open TurtleGeometry.Domain
+open TurtleGeometry.Core
 open System
 
 
