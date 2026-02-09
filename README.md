@@ -40,8 +40,11 @@ Both `square` and `triangle` seem to (almost) repeat two commands, four and thre
 
 The function should take two arguments, an integer `count` for the number of repetitions,  and a list `commands`, the commands we want to repeat. The first part of the function declaration should look like `let repeat count commands =`, then followed by what should be the function body. Functions are let-expressions, just like for values, and the function arguments follows after the functuon name, without parenthesis around. (`(count, commands)` is a tuple in F#). 
 
-The function body can be implemented in two ways
+The function body can be implemented in (at least) two ways. 
 
+The easiest way is probably to use then functions `List.replicate` and `List.collect`, available from the (List module)[https://fsharp.github.io/fsharp-core-docs/reference/fsharp-collections-listmodule.html]. Replicate will make a list with the input repeated n times. The result of this will be of type list of list, since our initial input is a list of turtle commands. Collect will flatten the list, and make the elements of the inner list as separate elements of the result list. Collect needs a mapping function as argument, in our case it should be the identity function `id`.
+
+Another way to implemenet repeat is by using recursion. 
 
 ### ✍️ Poly
 
