@@ -1,6 +1,6 @@
 module TurtleGeometry.Core
 
-type TurtleCommmand = 
+type TurtleCommand =
     | Forward of int
     | Right of int
     | Left of int
