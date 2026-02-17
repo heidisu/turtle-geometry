@@ -50,7 +50,7 @@ When repeat is finished, test that it works by rewriting square and triangle, an
 
 Now that we have `repeat` we can generalise `square` and `triangle`, and make a function `poly` that makes the turtle first move forward a given side distance, and then move right a given angle. This pattern repeats until the turtle closes the path it is drawing. We don't know yet when that happens, so for now we will just repeat the the two commands "forever", like 500 times. Make the function `poly` that takes two arguments `side` and `angle`. 
 
-This function will make the turtle create some cool paths. Experiments with different angles, small, large, prime numbers etc. 
+This function will make the turtle create some cool paths. Experiment with different angles, small, large, prime numbers etc. 
 
 ## 🟣 Circles
 
