@@ -36,7 +36,7 @@ Our webpage is showing a square, so the natural first step is to make an [equila
 
 ### ✍️ Repeat
 
-Both `square` and `triangle` seem to (almost) repeat two commands, four and three times respectively. It might be nice to have a function `repeat` to do the repetitions for us, so let's make it. 
+Both `square` and `triangle` seem to repeat two commands, four and three times respectively. It might be nice to have a function `repeat` to do the repetitions for us, so let's make it. 
 
 The function should take two arguments, an integer `count` for the number of repetitions,  and a list `commands`, the commands we want to repeat. The first part of the function declaration should look like `let repeat count commands =`, then followed by what should be the function body. Functions are let-expressions, just like for values, and the function arguments follows after the functuon name, without parenthesis around. (`(count, commands)` is a tuple in F#). 
 
@@ -47,6 +47,10 @@ Another way to implemenet `repeat` is by making a recursive helper function, tha
 When repeat is finished, test that it works by rewriting square and triangle, and check that it looks as it should.
 
 ### ✍️ Poly
+
+Now that we have `repeat` we can generalise `square` and `triangle`, and make a function `poly` that makes the turtle first move forward a given side distance, and then move right a given angle. This pattern repeats until the turtle closes the path it is drawing. We don't know yet when that happens, so for now we will just repeat the the two commands "forever", like 500 times. Make the function `poly` that takes two arguments `side` and `angle`. 
+
+This function will make the turtle create some cool paths. Experiments with different angles, small, large, prime numbers etc. 
 
 ## 🟣 Circles
 
