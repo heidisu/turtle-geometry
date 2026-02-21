@@ -52,7 +52,7 @@ Now that we have `repeat` we can generalise `square` and `triangle`, and make a 
 
 This function will make the turtle create some cool paths. Experiment with different angles: small, large, prime numbers etc. 
 
-❓When is a path complete so that the turtle walks the same pattern multiple times? When does a path not repeat itself within the limit of 500 repetitions? 
+❓ When is a path complete so that the turtle walks the same pattern multiple times? When does a path not repeat itself within the limit of 500 repetitions? 
 
 ### 💡Poly closing theorem
 
