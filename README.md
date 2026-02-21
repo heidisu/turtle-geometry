@@ -60,12 +60,13 @@ This function will make the turtle create some cool paths. Experiment with diffe
 
 The total turning number is how much the turtle turns during a path, adding the degrees to the turning number when moving right, and subtracting the degrees when moving left. 
 
+One of the proofs of the theorem sketched in the book is based on the property that all vertices of a path drawn by `poly` lies on a circle. This property can be proved by using that for three points, not on a line, there is a unique circle passing through them. Then one can use congruent triangles formed by the vertices to show that all the vertices has the same distance to the origin, and thus lie on the circle. With this established, we know that the turtle will walk along chords of equal lenghts in this circle. But for any heading of the turtle, there is exactly one possible chord of the required length, so when the turtle reach its initial heading, which occurs when the total turning is a multiple of 360, it must also be at the initial position, and about to trace that first chord again.      
+
 ### ✍️ Polystop
 
-Make an improved version of `poly` that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360
+Make an improved version of `poly`, the book calls it `polystop`, that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360. This function will need a recursive helper function, which keep track of the total turning and the accumulated turtle commands, and return the commands when the total turning is a multiple of 360. You might want to use the operator `%` that returns the remainder of dividing the first integer argument by the second.
 
+Test how this new function works, but keep in mind that the web page might stop to work if the paths get too long.
 
-## 🟣 Circles
-
-## 🪾More recursion
+## 🪾Growth and recursion
 
