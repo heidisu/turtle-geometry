@@ -56,7 +56,7 @@ This function will make the turtle create some cool paths. Experiment with diffe
 
 ### 💡Poly closing theorem
 
-> The path the turtle walks when given the commands produced by `poly` will ble closed when the total turning is a multiple of 360
+> The path the turtle walks when given the commands produced by `poly` will be closed when the total turning is a multiple of 360
 
 The total turning number is how much the turtle turns during a path, adding the degrees to the turning number when moving right, and subtracting the degrees when moving left. 
 
