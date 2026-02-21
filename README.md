@@ -50,9 +50,22 @@ When repeat is finished, test that it works by rewriting square and triangle, an
 
 Now that we have `repeat` we can generalise `square` and `triangle`, and make a function `poly` that makes the turtle first move forward a given side distance, and then move right a given angle. This pattern repeats until the turtle closes the path it is drawing. We don't know yet when that happens, so for now we will just repeat the the two commands "forever", like 500 times. Make the function `poly` that takes two arguments `side` and `angle`. 
 
-This function will make the turtle create some cool paths. Experiment with different angles, small, large, prime numbers etc. 
+This function will make the turtle create some cool paths. Experiment with different angles: small, large, prime numbers etc. 
+
+❓When is a path complete so that the turtle walks the same pattern multiple times? When does a path not repeat itself within the limit of 500 repetitions? 
+
+### 💡Poly closing theorem
+
+> The path the turtle walks when given the commands produced by `poly` will ble closed when the total turning is a multiple of 360
+
+The total turning number is how much the turtle turns during a path, adding the degrees to the turning number when moving right, and subtracting the degrees when moving left. 
+
+### ✍️ Polystop
+
+Make an improved version of `poly` that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360
+
 
 ## 🟣 Circles
 
-## More recursion
+## 🪾More recursion
 
