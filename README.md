@@ -66,7 +66,7 @@ One of the proofs of the theorem sketched in the book is based on the property t
 
 Make an improved version of `poly`, the book calls it `polystop`, that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360. This function will need a recursive helper function, which keeps track of the total turning and the accumulated turtle commands, and returns the commands when the total turning is a multiple of 360. You might want to use the operator `%` that returns the remainder of dividing the first integer argument by the second.
 
-Test how this new function works, but keep in mind that the web page might stop to work if the paths get too long.
+Test how this new function works, but keep in mind that the web page might stop working if the paths get too long.
 
 ## 🪾Growth and recursion
 
