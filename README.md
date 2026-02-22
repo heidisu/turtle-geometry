@@ -34,6 +34,10 @@ In our program we will be most interested in the commands, and less interested i
 
 Our webpage is showing a square, so the natural first step is to make an [equilateral triangle](https://en.wikipedia.org/wiki/Equilateral_triangle). Look at the file `Core.fs`, and the value `square`, which contains a list of turtle commands. Take inspiration from `square`, and make a new value `triangle` containing a new list of commands, consisting of a combination of `Forward` and `Right`. Update `webPagePath` to point to `triangle`, and check how it looks in the browser.
 
+### 🎨 Experiment
+
+Experiment with the square, the triangle and the basic turtle commands. Combine them into something fun!
+
 ### ✍️ Repeat
 
 Both `square` and `triangle` seem to repeat two commands, four and three times respectively. It might be nice to have a function `repeat` to do the repetitions for us, so let's make it. 
