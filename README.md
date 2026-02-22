@@ -28,7 +28,7 @@ The four simple commands we will be using are `Forward`, `Left`, `Right` and `Ba
 
 In our program we will be most interested in the commands, and less interested in how the turtle executes them. We will create lists of  `TurtleCommands` which each are a complete set of commands the turtle need in order to create a specific path. 
 
-## 🟥 Polygons
+## 🟥 Part 1: Polygons
 
 ### ✍️ Triangle
 
@@ -72,5 +72,8 @@ Make an improved version of `poly`, the book calls it `polystop`, that uses the 
 
 Test how this new function works, but keep in mind that the web page might stop working if the paths get too long.
 
-## 🪾Growth and recursion
+## 🪾Part 2: Growth and recursion
+
+Now that we have got the hang of recursion, let's do even more recursion!
+
 
