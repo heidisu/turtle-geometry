@@ -74,6 +74,14 @@ Test how this new function works, but keep in mind that the web page might stop 
 
 ## 🪾Part 2: Growth and recursion
 
-Now that we have got the hang of recursion, let's do even more recursion!
+Now that we have got the hang of recursion, let's do even more! 
+It turns out that the turtle is good at fractal patterns. 
+
+We will start with a regular binary tree. A tree consists of branches, where each branch have two child branches of half the length, in 45 degrees left and right from top. 
+
+### ✍️ Branch
+
+Make the recursive function `branch` that creates the list of turtle commands for making a tree. The function should have `length` and `level` as arguments. 
+If the level equals zero, the function should return an empty list, otherwise it should a list consisting moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`.
 
 
