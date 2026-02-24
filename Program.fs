@@ -1,4 +1,5 @@
 ﻿module TurtleGeometry.Program
+
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Giraffe
@@ -9,25 +10,22 @@ open TurtleGeometry.Core
 
 let webApp =
     choose [
-        route "/" >=> htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage webPagePath))]
+        route "/"
+        >=> htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage webPagePath))
+    ]
 
-let configureApp (app : IApplicationBuilder) =
-    app.UseGiraffe webApp
+let configureApp (app: IApplicationBuilder) = app.UseGiraffe webApp
 
-let configureServices (services : IServiceCollection) =
-    services.AddGiraffe() |> ignore
+let configureServices (services: IServiceCollection) = services.AddGiraffe() |> ignore
 
 [<EntryPoint>]
 let main _ =
-    Host.CreateDefaultBuilder()
-        .ConfigureWebHostDefaults(
-            fun webHostBuilder ->
-                webHostBuilder
-                    .Configure(configureApp)
-                    .ConfigureServices(configureServices)
-                    .UseUrls("http://*:5000")
-                    |> ignore)
+    Host
+        .CreateDefaultBuilder()
+        .ConfigureWebHostDefaults(fun webHostBuilder ->
+            webHostBuilder.Configure(configureApp).ConfigureServices(configureServices).UseUrls("http://*:5000")
+            |> ignore)
         .Build()
         .Run()
-    0
 
+    0
