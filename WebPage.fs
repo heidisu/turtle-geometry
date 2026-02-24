@@ -40,11 +40,9 @@ let rec calculatePath (x, y) (dx, dy) svgPath xVals yVals turtlePath =
             let newPhi = phi - apol
             calculatePath (x, y) (cos newPhi, sin newPhi) svgPath xVals yVals xs
         | Back a ->
-            let ndx = -dx
-            let ndy = -dy
             let afloat = float a
-            let factor = sqrt (afloat * afloat / (ndx * ndx + ndy * ndy))
-            let newX, newY = (x + factor * ndx, y + factor * ndy)
+            let factor = sqrt (afloat * afloat / (dx * dx + dy * dy))
+            let newX, newY = (x - factor * dx, y - factor * dy)
             let newPath = svgPath + $" M{newX},{newY}"
             calculatePath (newX, newY) (dx, dy) newPath (newX :: xVals) (newY :: yVals) xs
 
