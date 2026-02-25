@@ -8,11 +8,10 @@ open System
 let color = "#5d009b"
 
 let svg width height path (xMin, xMax, yMin, yMax) =
-    let size = max (xMax - xMin) (yMax - yMin)
     let strokeWidth = 2
 
     $"""
-    <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height - strokeWidth}" viewBox="{xMin - strokeWidth},{yMin - strokeWidth},{size + 2 * strokeWidth},{size + 2 * strokeWidth}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{xMin - strokeWidth},{yMin - strokeWidth},{xMax - xMin + 2 * strokeWidth},{yMax - yMin + 2 * strokeWidth}">
         <path stroke="{color}" stroke-width="{strokeWidth}" fill="white" vector-effect="non-scaling-stroke" d="{path}">
         </path>
     </svg>
@@ -48,7 +47,7 @@ let rec calculatePath (x, y) (dx, dy) svgPath xVals yVals turtlePath =
 
 let turtleToSvgPath turtlePath =
     let path, xVals, yVals =
-        calculatePath (0.0, 0.0) (0.0, -1.0) "M0,0" [] [] turtlePath
+        calculatePath (0.0, 0.0) (0.0, -1.0) "M0,0" [ 0.0 ] [ 0.0 ] turtlePath
 
     path, (int <| List.min xVals, int <| List.max xVals, int <| List.min yVals, int <| List.max yVals)
 
