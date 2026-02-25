@@ -86,6 +86,8 @@ If the level equals zero, the function should return an empty list, otherwise it
 
 Think about how this function should work. If level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. 
 
+<img src="./docs/imgs/branch-3.png" alt="branhces level=3" title="branches level=3" width="200"/>
+
 
 
 
