@@ -82,6 +82,10 @@ We will start with a regular binary tree. A tree consists of branches, where eac
 ### ✍️ Branch
 
 Make the recursive function `branch` that creates the list of turtle commands for making a tree. The function should have `length` and `level` as arguments. 
-If the level equals zero, the function should return an empty list, otherwise it should a list consisting moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`.
+If the level equals zero, the function should return an empty list, otherwise it should a list consisting moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`.  
+
+Think about how this function should work. If level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. 
+
+
 
 
