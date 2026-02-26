@@ -92,7 +92,7 @@ See how the trees produced by `branch` look for different values of level.
 
 ### 🎨 Experiments
 
-Since the turtle will have returned to the start of the tree when it is finished, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotate some degrees in the same direction between each tree, or make them into an avenue. 
+Since the turtle will have returned to the start of the tree when it is finished, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotating some degrees in the same direction between each tree, or make them into an avenue. 
 
 If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left branch or a right branch. 
 
