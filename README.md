@@ -77,14 +77,14 @@ Test how this new function works, but keep in mind that the web page might stop 
 Now that we have got the hang of recursion, let's do even more! 
 It turns out that the turtle is good at fractal patterns. 
 
-We will start with a regular binary tree. A tree consists of branches, where each branch have two child branches of half the length, in 45 degrees left and right from top. 
+We will start with a regular binary tree. A tree consists of branches, where each branch has two child branches of half the length, at 45 degrees to the left and right from the top. 
 
 ### ✍️ Branch
 
 Make the recursive function `branch` that creates the list of turtle commands for making a tree. The function should have `length` and `level` as arguments. 
 If the level equals zero, the function should return an empty list, otherwise it should return a list consisting of moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`.  
 
-Think about how this function should work. If level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back to where it began after each branch. The book calls this property *state-transparency*. To get back to where the turtle started, we have to rotate it a bit left, and use back to send it to where it started.
+Think about how this function should work. If level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back to where it began after each branch. The book calls this property *state-transparency*. To get back to where the turtle started, we have to rotate it a bit left, and use `Back` to send it to where it started.
 
 <img src="./docs/imgs/branch-3.png" alt="branches level=3" title="branches level=3" width="200"/>
 
