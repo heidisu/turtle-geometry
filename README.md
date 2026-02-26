@@ -26,7 +26,16 @@ In our program we will be most interested in the commands, and less interested i
 
 ## ♯ What is F#?
 
-## How does the workshop work?
+## 🏗️ How does the workshop work?
+
+If you have got the project running by following the steps in the getting started section, you are ready to start on part 1. You can read and do the exercises at your own pace. Don't hesitate to ask questions!
+
+* ✍️ = A programming task to do, other tasks in the same part might depend on them
+* 🎨 =  Contains suggestions to explore something further, can be skipped
+* 💡 = Describes a result, like a theorem
+* 🧮 = A theoretical exercise, can be skipped 
+
+Spend time on the parts you find entertaining, whether it is to play with turtle design or fiddle with F#. The most important thing is to have fun! 🎉
 
 ## 🟥 Part 1: Polygons
 
@@ -96,7 +105,7 @@ Since the turtle will have returned to the start of the tree when it is finished
 
 If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left branch or a right branch. 
 
-### 🧮Math
+### 🧮 Math
 
 What is the total length of the lines drawn by the turtle? 
 
