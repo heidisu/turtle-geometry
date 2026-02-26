@@ -84,9 +84,17 @@ We will start with a regular binary tree. A tree consists of branches, where eac
 Make the recursive function `branch` that creates the list of turtle commands for making a tree. The function should have `length` and `level` as arguments. 
 If the level equals zero, the function should return an empty list, otherwise it should a list consisting moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`.  
 
-Think about how this function should work. If level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back TO where it began after each branch. The book calls this property *state-transparency*. To get back to where the turtle started, we have to rotate it a bit left, and use back to send it to where it started.
+Think about how this function should work. If level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back to where it began after each branch. The book calls this property *state-transparency*. To get back to where the turtle started, we have to rotate it a bit left, and use back to send it to where it started.
 
 <img src="./docs/imgs/branch-3.png" alt="branhces level=3" title="branches level=3" width="200"/>
+
+### 🎨 Experiments
+
+Since the turtle will have returned to the start of the tree when it is finsihed, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotate some degrees in the same direction between each tree, or make them into an avenue. 
+
+If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left brach or a right branch. 
+
+### 🧮Math exercise
 
 
 
