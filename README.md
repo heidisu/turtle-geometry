@@ -88,15 +88,17 @@ Think about how this function should work. If level equals 1 the turtle should j
 
 <img src="./docs/imgs/branch-3.png" alt="branhces level=3" title="branches level=3" width="200"/>
 
+See how the trees produces by `branch` look for different values of level.
+
 ### 🎨 Experiments
 
 Since the turtle will have returned to the start of the tree when it is finsihed, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotate some degrees in the same direction between each tree, or make them into an avenue. 
 
 If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left brach or a right branch. 
 
-### 🧮Math exercise
+### 🧮Math
 
-
+What is the total length of the lines drawn by the turtle? 
 
 
 
