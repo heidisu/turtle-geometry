@@ -14,7 +14,7 @@ Make sure you have .NET 10 SDK installed by running `dotnet --version` in the te
 
 ### Editor
 
-If you want good F# language support, and don't already have a preferred setup for working in .NET, I would recommend using [VS Code](https://code.visualstudio.com) with the [Ionide extension](https://github.com/ionide/ionide-vscode-fsharp)
+If you want good F# language support, and don't already have a preferred setup for working in .NET, I would recommend using [VS Code](https://code.visualstudio.com) with the [Ionide extension](https://github.com/ionide/ionide-vscode-fsharp).
 
 ### Alternative ways of running the code
 
