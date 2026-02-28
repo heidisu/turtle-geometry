@@ -1,10 +1,6 @@
 # 🐢 Fun with F# and turtle geometry
 
-The content of the workshop is based on content from the first two chapters of [Turtle Geometry: The Computer as a Medium for Exploring Mathematics](https://direct.mit.edu/books/oa-monograph/4663/Turtle-GeometryThe-Computer-as-a-Medium-for) by Harold Abelson and Andrea diSessa.
-
-**🚧 Under construction 🚧**
-
-Getting ready for [Booster 2026](https://www.boosterconf.no/2026/program/wednesday/9_short_talks_and_workshops/dreggen_4/fun-with-f-and-turtle-geometry/)
+This workshop is based on content from the first two chapters of [Turtle Geometry: The Computer as a Medium for Exploring Mathematics](https://direct.mit.edu/books/oa-monograph/4663/Turtle-GeometryThe-Computer-as-a-Medium-for) by Harold Abelson and Andrea diSessa.
 
 ## 🚀 Getting started
 
@@ -16,6 +12,10 @@ Make sure you have .NET 10 SDK installed by running `dotnet --version` in the te
 1. Navigate to <http://localhost:5000> in your browser
 1. If you see a square you are good to go! 
 
+### Editor
+
+If you want good F# language support, and don't already have a preferred setup for working in .NET, I would recommend using [VS Code](https://code.visualstudio.com) with the [Ionide extension](https://github.com/ionide/ionide-vscode-fsharp).
+
 ### Alternative ways of running the code
 
 There is setup for devcontainer, which can be used to work with the code on GitHub, using GitHub Codespaces, or locally from an IDE like VS Code. 
@@ -26,7 +26,38 @@ A turtle is a small animal moving around in a plane. The turtle doesn't move ran
 
 The four simple commands we will be using are `Forward`, `Left`, `Right` and `Back`, and they all take an integer as input. For forward and back, the integer is the distance the turtle should move, for left and right, it is the degrees the turtle should rotate. The forward command will cause the turtle to leave a trace the distance it moved, while back does not. Forward and back change the turtles position, while left and right change the direction of the turtle.
 
-In our program we will be most interested in the commands, and less interested in how the turtle executes them. We will create lists of  `TurtleCommands` which each are a complete set of commands the turtle need in order to create a specific path. 
+In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of  `TurtleCommands` which each are a complete set of commands the turtle needs in order to create a specific path, and we will create various functions to make the list of desired commands more effectively.
+
+## ♯ What is F#?
+
+F# is a friendly, function-first language, running on the .NET platform. The team working with F# say that the F is for fun ([cited on Wikipedia](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)#cite_note-41])), it really is for functional and [System F](https://en.wikipedia.org/wiki/System_F).
+
+If you are new to F# you might want to take a look at [A very short intro to F#](/docs/fsharp-intro.md) to get a basic overview of the language and the syntax, and revisit it during the workshop. 
+
+### F# interactive
+
+F# interactive lets you play with the F# code directly in the console. You can start an interactive session with the command `dotnet fsi`. Then you can type F# expressions and execute them by typing `;;`.
+
+If you are using VS Code you can select code in a `.fs` file and send the selection to F# interactive with the shortcut `Alt` + `Enter`.
+
+The F# interactive can be useful when working with functions, to test that they behave as they should, without having to wait for code to rebuild.
+
+## 🏗️ The workshop
+
+The workshop consists of three parts:
+* [🟥 Part 1: Polygons](#-part-1-polygons) - Make polygons and get familiar with lists and functions 
+* Part 1B - A small detour with circles. The part can be skipped
+* [🪾 Part 2: Growth and recursion](#-part-2-growth-and-recursion) - More recursion to make trees, snowflakes and Hilbert curves
+
+If you have got the project running by following the steps in the [Getting started](#-getting-started) section, you are ready to start on [Part 1](#-part-1-polygons). You can read and follow the instructions at your own pace. We might also look at some topics together in the group. Don't hesitate to ask questions or share thoughts and ideas!
+
+Some of the emojis are used to mark different types of content:
+* ✍️ = A programming task to do, other tasks in the same part might depend on them
+* 🎨 = Contains suggestions to explore something further, can be skipped
+* 💡 = Describes a result, like a theorem
+* 🧮 = A theoretical exercise, can be skipped
+
+Spend time on the parts you find entertaining, whether it is to play with turtle designs or fiddle with F#. Follow your own ideas, and don't let the instructions limit you. The most important thing is to have fun! 🎉
 
 ## 🟥 Part 1: Polygons
 
@@ -96,7 +127,7 @@ Since the turtle will have returned to the start of the tree when it is finished
 
 If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left branch or a right branch. 
 
-### 🧮Math
+### 🧮 Math
 
 What is the total length of the lines drawn by the turtle? 
 
