@@ -14,7 +14,7 @@ Make sure you have .NET 10 SDK installed by running `dotnet --version` in the te
 
 ### Editor
 
-If you want good F# language support, and don't already have a preferred setuo for working in .NET, I would recommend using [VS Code](https://code.visualstudio.com) with the [Ionide extension](https://github.com/ionide/ionide-vscode-fsharp)
+If you want good F# language support, and don't already have a preferred setup for working in .NET, I would recommend using [VS Code](https://code.visualstudio.com) with the [Ionide extension](https://github.com/ionide/ionide-vscode-fsharp)
 
 ### Alternative ways of running the code
 
@@ -30,7 +30,7 @@ In our program we will be most interested in the commands, and less interested i
 
 ## ♯ What is F#?
 
-F# is a friendly, function-first language, running on the .NET platform. The team working with F# say that the F is for fun ([cited on Wikipedia](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)#cite_note-41])), it is really for functional and [system F](https://en.wikipedia.org/wiki/System_F).
+F# is a friendly, function-first language, running on the .NET platform. The team working with F# say that the F is for fun ([cited on Wikipedia](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)#cite_note-41])), it really is for functional and [System F](https://en.wikipedia.org/wiki/System_F).
 
 If you are new to F# you might want to take a look at [A very short intro to F#](/docs/fsharp-intro.md) to get a basic overview of the language and the syntax, and revisit it during the workshop. 
 
