@@ -42,7 +42,7 @@ If you are using VS Code you can select code in a `.fs`-file and send the select
 
 The F# interactive can be useful when working with functions, to test that they behave as they should, without having to wait for code to rebuild.
 
-## 🏗️ How does the workshop work?
+## 🏗️ The workshop
 
 The workshop consists of three parts:
 * [🟥 Part 1: Polygons](#-part-1-polygons) - Make plolygons and get familiar with lists and functions 
