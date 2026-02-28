@@ -38,7 +38,7 @@ If you are new to F# you might want to take a look at [A very short intro to F#]
 
 F# interactive lets you play with the F# code directly in the console. You can start an interactive session with the command `dotnet fsi`. Then you can type F# expressions and execute them by typing `;;`.
 
-If you are using VS Code you can select code in a `.fs`-file and send the selection to F# interactive with the shortcut `Alt` + `Enter`.
+If you are using VS Code you can select code in a `.fs` file and send the selection to F# interactive with the shortcut `Alt` + `Enter`.
 
 The F# interactive can be useful when working with functions, to test that they behave as they should, without having to wait for code to rebuild.
 
