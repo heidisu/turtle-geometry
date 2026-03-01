@@ -24,13 +24,13 @@ There is setup for devcontainer, which can be used to work with the code on GitH
 
 A turtle is a small animal moving around in a plane. The turtle doesn't move randomly, instead it responds to commands. 
 
-The four simple commands we will be using are `Forward`, `Left`, `Right` and `Back`, and they all take an integer as input. For forward and back, the integer is the distance the turtle should move, for left and right, it is the degrees the turtle should rotate. The forward command will cause the turtle to leave a trace the distance it moved, while back does not. Forward and back change the turtles position, while left and right change the direction of the turtle.
+The four simple commands we will be using are `Forward`, `Left`, `Right` and `Back`, and they all take an integer as input. For forward and back, the integer is the distance the turtle should move, for left and right, it is the degrees the turtle should rotate. The forward command will cause the turtle to leave a trace the distance it moved, while back does not. Forward and back change the turtle's position, while left and right change the direction of the turtle.
 
-In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of  `TurtleCommands` which each are a complete set of commands the turtle needs in order to create a specific path, and we will create various functions to make the list of desired commands more effectively.
+In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of  `TurtleCommand`, which each are a complete set of the commands the turtle needs to create a specific path. To put together the commands, we will create various functions, some will be building blocks for larger functions, while others are recursive.
 
 ## ♯ What is F#?
 
-F# is a friendly, function-first language, running on the .NET platform. The team working with F# say that the F is for fun ([cited on Wikipedia](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)#cite_note-41])), it really is for functional and [System F](https://en.wikipedia.org/wiki/System_F).
+F# is a friendly, function-first language, running on the .NET platform. The team developing F# say that the F is for fun ([cited on Wikipedia](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)#cite_note-41])), it really is for functional and [System F](https://en.wikipedia.org/wiki/System_F).
 
 If you are new to F# you might want to take a look at [A very short intro to F#](/docs/fsharp-intro.md) to get a basic overview of the language and the syntax, and revisit it during the workshop. 
 
