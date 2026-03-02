@@ -47,7 +47,7 @@ The F# interactive can be useful when working with functions, to test that they 
 The workshop consists of the following parts:
 * [🟥 Part 1: Polygons](#-part-1-polygons) - Get familiar with lists and functions 
 * [🌳 Part 2: Trees](#-part-2-trees)
-* [❄️ Part 3: Snowflakes](#-part-3-snowflakes)
+* [❄️ Part 3: Snowflakes](#️-part-3-snowflakes)
 * [🚀 Part 4: Space filling curves](#-part-4-space-filling-curves)
 
 If you have got the project running by following the steps in the [Getting started](#-getting-started) section, you are ready to start on [Part 1](#-part-1-polygons). You can read and follow the instructions at your own pace. We might also look at some topics together in the group. Don't hesitate to ask questions or share thoughts and ideas!
@@ -132,7 +132,7 @@ If you want to make more realistic looking trees you can experiment with the ang
 
 What is the total length of the lines drawn by the turtle? 
 
-## ❄️ Part 3: Snowflakes
+## ❄️ Part 3: snowflakes
 
 Another nice fractal pattern is the snowflake. The ground shape is an equilateral triangle, but instead of straight lines as sides, the sides can recursively be split in three segments of equal length. The first and last segments are kept, but the middle segment is replaced by two segments of same length, such that they would form an equilateral triangle with the segment we are replacing.
 
@@ -144,7 +144,7 @@ This pattern can of course be repeated recursively, and that is how the snowflak
 
 Start by making the function `snowflake` with the parameters `size` and `level`, for the length of the sides and the level of recursion, and the function body can initially be similar to the `triangle` list, after we rewrote it to use the [repeat](#%EF%B8%8F-repeat) function. 
 
-Then the `Forward` instruction have to be replaced by a function that recursively make the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `side / 3` and `level - 1` where the sides are in the illustration.
+Then the `Forward` instruction have to be replaced by a function that recursively make the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration.
 
 Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`. This is a difference from the branch function that was state transparent, and did nothing at level zero. Snowflake does not change the heading, but it changes the position. 
 
@@ -157,7 +157,7 @@ Make a similar pattern with a square as the basis.
 
 ### 🧮 Math exercise
 
-What is the length of a snowflake curve of level `n`, and what area does it enclose? What happens when `n` move towards infinity?
+What is the length of a snowflake curve of level `n`, and what area does it enclose? What happens as `n` approaches infinity?
 
 ## 🚀 Part 4: Space filling curves
 
