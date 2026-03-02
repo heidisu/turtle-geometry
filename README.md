@@ -44,10 +44,11 @@ The F# interactive can be useful when working with functions, to test that they 
 
 ## 🏗️ The workshop
 
-The workshop consists of three parts:
-* [🟥 Part 1: Polygons](#-part-1-polygons) - Make polygons and get familiar with lists and functions 
-* Part 1B - A small detour with circles. The part can be skipped
-* [🪾 Part 2: Growth and recursion](#-part-2-growth-and-recursion) - More recursion to make trees, snowflakes and Hilbert curves
+The workshop consists of the following parts:
+* [🟥 Part 1: Polygons](#-part-1-polygons) - Get familiar with lists and functions 
+* [🌳 Part 2: Trees](#-part-2-trees)
+* [❄️ Part 3: Snowflakes](#️-part-3-snowflakes)
+* [🚀 Part 4: Space filling curves](#-part-4-space-filling-curves)
 
 If you have got the project running by following the steps in the [Getting started](#-getting-started) section, you are ready to start on [Part 1](#-part-1-polygons). You can read and follow the instructions at your own pace. We might also look at some topics together in the group. Don't hesitate to ask questions or share thoughts and ideas!
 
@@ -103,7 +104,7 @@ Make an improved version of `poly`, the book calls it `polystop`, that uses the 
 
 Test how this new function works, but keep in mind that the web page might stop working if the paths get too long.
 
-## 🪾 Part 2: Growth and recursion
+## 🌳 Part 2: Trees
 
 Now that we have got the hang of recursion, let's do even more! 
 It turns out that the turtle is good at fractal patterns. 
@@ -121,15 +122,42 @@ Think about how this function should work. If level equals 1 the turtle should j
 
 See how the trees produced by `branch` look for different values of level.
 
-### 🎨 Experiments
+### 🎨 Experiment
 
 Since the turtle will have returned to the start of the tree when it is finished, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotating some degrees in the same direction between each tree, or make them into an avenue. 
 
 If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left branch or a right branch. 
 
-### 🧮 Math
+### 🧮 Math exercise
 
 What is the total length of the lines drawn by the turtle? 
 
+## ❄️ Part 3: snowflakes
 
+Another nice fractal pattern is the snowflake. The ground shape is an equilateral triangle, but instead of straight lines as sides, the sides can recursively be split in three segments of equal length. The first and last segments are kept, but the middle segment is replaced by two segments of same length, such that they would form an equilateral triangle with the segment we are replacing.
+
+<img src="./docs/imgs/snowflake-construction.png" alt="Snowflake construction" title="Snowflake construction"/>
+
+This pattern can of course be repeated recursively, and that is how the snowflake is made. 
+
+### ✍️ Snowflake
+
+Start by making the function `snowflake` with the parameters `size` and `level`, for the length of the sides and the level of recursion, and the function body can initially be similar to the `triangle` list, after we rewrote it to use the [repeat](#%EF%B8%8F-repeat) function. 
+
+Then the `Forward` instruction have to be replaced by a function that recursively make the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration.
+
+Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`. This is a difference from the branch function that was state transparent, and did nothing at level zero. Snowflake does not change the heading, but it changes the position. 
+
+Test the snowflake function with different sizes and levels. Is it really necessary to divide the size by three?
+
+### 🎨 Experiment
+
+Make a similar pattern with a square as the basis. 
+
+
+### 🧮 Math exercise
+
+What is the length of a snowflake curve of level `n`, and what area does it enclose? What happens as `n` approaches infinity?
+
+## 🚀 Part 4: Space filling curves
 
