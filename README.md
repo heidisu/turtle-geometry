@@ -2,6 +2,12 @@
 
 This workshop is based on content from the first two chapters of [Turtle Geometry: The Computer as a Medium for Exploring Mathematics](https://direct.mit.edu/books/oa-monograph/4663/Turtle-GeometryThe-Computer-as-a-Medium-for) by Harold Abelson and Andrea diSessa.
 
+<p>
+<img src="./docs/imgs/poly-501.png" alt="Polygon" title="Polygon" height="200"/>
+<img src="./docs/imgs/snowflake.png" alt="Snowflake" title="Snowflake" height="200"/>
+<img src="./docs/imgs/hilbert-5.png" alt="Hilbert curve" title="Hilbert curve" height="200"/>
+</p>
+
 ## 🚀 Getting started
 
 Make sure you have .NET 10 SDK installed by running `dotnet --version` in the terminal. The .NET 10 SDK can be downloaded from https://dotnet.microsoft.com/en-us/download. 
