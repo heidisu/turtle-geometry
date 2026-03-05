@@ -34,7 +34,7 @@ The four simple commands we will be using are `Forward`, `Left`, `Right` and `Ba
 
 In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of  `TurtleCommand`, which each are a complete set of the commands the turtle must be told to create a specific path. To put together the commands, we will create various functions, some will be building blocks for larger functions, while others are recursive.
 
-What we do need to know about the drawing however is that the turtle's initial position is at (0,0), heading upwards, and the path is scaled to fit the svg size.  
+What we do need to know about the drawing, however, is that the turtle's initial position is at (0,0), heading upwards, and the path is scaled to fit the SVG size.  
 
 ## ♯ What is F#?
 
