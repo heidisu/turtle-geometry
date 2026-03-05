@@ -54,7 +54,7 @@ The workshop consists of the following parts:
 * [🟥 Part 1: Polygons](#-part-1-polygons) - Get familiar with lists and functions 
 * [🌳 Part 2: Trees](#-part-2-trees)
 * [❄️ Part 3: Snowflakes](#️-part-3-snowflakes)
-* [🚀 Part 4: Space filling curves](#-part-4-space-filling-curves)
+* [🚀 Part 4: Space-filling curves](#-part-4-space-filling-curves)
 
 If you have got the project running by following the steps in the [Getting started](#-getting-started) section, you are ready to start on [Part 1](#-part-1-polygons). You can read and follow the instructions at your own pace. We might also look at some topics together in the group. Don't hesitate to ask questions or share thoughts and ideas!
 
@@ -96,7 +96,7 @@ This function will make the turtle create some cool paths. Experiment with diffe
 
 ❓ When is a path complete so that the turtle walks the same pattern multiple times? When does a path not repeat itself within the limit of 500 repetitions? 
 
-### 💡Poly closing theorem
+### 💡 Poly closing theorem
 
 > The path the turtle walks when given the commands produced by `poly` will be closed when the total turning is a multiple of 360
 
@@ -165,5 +165,37 @@ Make a similar pattern with a square as the basis.
 
 What is the length of a snowflake curve of level `n`, and what area does it enclose? What happens as `n` approaches infinity?
 
-## 🚀 Part 4: Space filling curves
+## 🚀 Part 4: Space-filling curves
 
+The last theme for today is space-filling curves, which behave as the name suggests, they pass through every point of a two dimensional region, like the unit square. We will look at the Hilbert curve, named after the german mathematician David Hilbert, who published a [paper (in german)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/hilbert.pdf) about the curve, in 1891. the space-filling Hilbert curve is the limit of piecewise linear curves. We will work with these approximation curves, and also refer to them as Hilbert curves.
+
+The Hilbert curve is constructed from recursively divinding a square into four subsquares. At each step, the squares are number such that a square numbered `n` has a common side with the square numbered `n - 1`, and when a square is divided into four new squares in the next interation, these four squares will be consecutively numbered. The Hilbert curve will at each level pass through the numbered squares in the given order. 
+
+<p>
+<img src="./docs/imgs/hilbert-0.png" alt="Initial Hilbert curve" title="Initial Hilbert curve" height="200"/>
+<img src="./docs/imgs/hilbert-1.png" alt="Hilbert curve level 1" title="Hilbert curve level 1" height="200"/>
+</p>
+
+
+### ✍️ lHilbert and rHilbert
+
+To make a Hilbert curve we will need two functions, one that gives the commands for traversing from right towards left (`lHilbert`), and one that goes from left to right (`rHilbert`). The functions take `size`and `level` as arguments, and the figures below illustrates how `lHilbert` and `rHilbert` are constructed recursively, by joining curves of one level lower.
+
+<p>
+<img src="./docs/imgs/lhilbert.png" alt="lHilbert" title="lHilbert" height="200"/>
+<img src="./docs/imgs/rhilbert.png" alt="rHilbert" title="rHilbert" height="200"/>
+</p>
+
+It seems like we have run into a F# problem then. The two functions depend on each other, while in F# you cannot reference anything that isn't defined before you want to use it. But there is a solution, the keyword `and` is there for mutually recursive bindings. So use `and` instead of `let rec` for the second function.
+
+Implement the functions and test them out for different levels.
+
+### 🧮 Math exercise
+
+What is the length of the Hilbert curve of level `n`with size equal one? Start by finding the lenght of the Hilbert curve at level `n` as a function of the lenght of the curve at level `n - 1`. 
+
+### 💡 Application of the Hilbert curve
+
+The mapping from the line to the two dimensional space given by the Hilbert curve, perserves the locality quite well, which means that points that are close to each other on the line will be close in two dimensional space. This has been used to visualise the utilisation of the IPv4 address space. See [Mapping the whole internet with Hilbert curves](https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve)
+
+<img src="https://imgs.xkcd.com/comics/map_of_the_internet.jpg" title="xkcd map of the internet" height="300">
