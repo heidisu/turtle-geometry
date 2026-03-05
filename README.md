@@ -32,7 +32,9 @@ A turtle is a small animal moving around in a plane. The turtle doesn't move ran
 
 The four simple commands we will be using are `Forward`, `Left`, `Right` and `Back`, and they all take an integer as input. For forward and back, the integer is the distance the turtle should move, for left and right, it is the degrees the turtle should rotate. The forward command will cause the turtle to leave a trace the distance it moved, while back does not. Forward and back change the turtle's position, while left and right change the direction of the turtle.
 
-In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of  `TurtleCommand`, which each are a complete set of the commands the turtle needs to create a specific path. To put together the commands, we will create various functions, some will be building blocks for larger functions, while others are recursive.
+In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of  `TurtleCommand`, which each are a complete set of the commands the turtle must be told to create a specific path. To put together the commands, we will create various functions, some will be building blocks for larger functions, while others are recursive.
+
+What we do need to know about the drawing however is that the turtle's initial position is at (0,0), heading upwards, and the path is scaled to fit the svg size.  
 
 ## ♯ What is F#?
 
@@ -59,10 +61,9 @@ The workshop consists of the following parts:
 If you have got the project running by following the steps in the [Getting started](#-getting-started) section, you are ready to start on [Part 1](#-part-1-polygons). You can read and follow the instructions at your own pace. We might also look at some topics together in the group. Don't hesitate to ask questions or share thoughts and ideas!
 
 Some of the emojis are used to mark different types of content:
-* ✍️ = A programming task to do, other tasks in the same part might depend on them
-* 🎨 = Contains suggestions to explore something further, can be skipped
-* 💡 = Describes a result, like a theorem
-* 🧮 = A theoretical exercise, can be skipped
+* ✍️ = A programming task to do, other tasks might depend on them
+* 🎨 = Suggestions for further explorations, explore as much or little as you like
+* 🧮 = A more theoretical exercise, skip if it doesn't interest you
 
 Spend time on the parts you find entertaining, whether it is to play with turtle designs or fiddle with F#. Follow your own ideas, and don't let the instructions limit you. The most important thing is to have fun! 🎉
 
