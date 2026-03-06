@@ -4,7 +4,7 @@ F# is a multi-paradigm language with a functional-first mindset. It is strongly 
 
 ## Order of code and files
 
-F# requires files and code within a file to be organised in dependency order. It means for instance that you have to define a function in the file above the place you want to use it.
+F# requires files and code within each file to be organised in dependency order. For instance must a function in a file be defined above the place you want to use it.
 
 ## Syntax
 
@@ -172,6 +172,16 @@ Single-line comments start with `//`, and block comments are text between `(* *)
     Multi-line comments
     Useful for temporarily commenting out code sections
 *)
+```
+
+### Print to stdout
+
+```fsharp
+let circle = Circle 3.0
+printfn "Shape: %A" circle
+
+// with string interpolation
+printfn $"Shape: {circle}"
 ```
 
 ## Learn more
