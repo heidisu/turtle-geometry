@@ -160,7 +160,7 @@ Each branch of the expression must return a value of the same type
 let test x = 
     if x > 0 then "positive"
     elif x < 0 then "negative"
-    else "zero
+    else "zero"
 ```
 
 ### Comments
