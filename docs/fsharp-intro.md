@@ -2,22 +2,14 @@
 
 F# is a multi-paradigm language with a functional-first mindset. It is strongly typed and includes features like immutability by default, type inference, and functions as first-class citizens. The language is in the [ML](https://en.wikipedia.org/wiki/ML_(programming_language)) family, similar to [OCaml](https://en.wikipedia.org/wiki/OCaml), and runs on .NET.
 
+## Order of code and files
+
+F# requires files and code within a file to be organised in dependency order. It means for instance that you have to define a function in the file above the place you want to use it.
 
 ## Syntax
 
 This is a short walkthrough of basic F# syntax, with an emphasis on what we use in the workshop.
 In F#, indentation is used to define code blocks, similar to Python. That means no semicolons, and fewer parentheses and curly braces.
-
-### Comments
-Single-line comments start with `//`, and block comments are text between `(* *)`.
-```fsharp
-// Single-line comment
-
-(*
-    Multi-line comments
-    Useful for temporarily commenting out code sections
-*)
-```
 
 ### Values
 
@@ -49,8 +41,8 @@ The pipe forward operator `|>` takes a value and a function, and applies the fun
 |> (+) 4
 |> (*) 2
 ```
-The parentheses around `+` are needed to use the infix operator `a + b` as the prefix function `(+) a b`.
 
+The parentheses around `+` are needed to use the infix operator `a + b` as the prefix function `(+) a b`.
 
 #### Function composition
 
@@ -125,6 +117,7 @@ type Person = { Name: string; Age: int }
 let bob = { Name = "Bob"; Age = 42 }
 bob.Name
 ```
+
 #### Sum types
 
 A sum type, or discriminated union, is a type where a member of the type is exactly one of one or more possible values. In the case of `Shape` below, a member of this type is either a circle or a rectangle.
@@ -157,6 +150,29 @@ let rec sum l =
 ```
 
 The compiler gives a warning, `warning FS0025: Incomplete pattern matches on this expression.`, if pattern matching is not exhaustive.
+
+### Conditionals
+
+To control the execution of code based on the result of boolean expressions, an if-else-expression can be used.
+Each branch of the expression must return a value of the same type
+
+```fsharp
+let test x = 
+    if x > 0 then "positive"
+    elif x < 0 then "negative"
+    else "zero
+```
+
+### Comments
+Single-line comments start with `//`, and block comments are text between `(* *)`.
+```fsharp
+// Single-line comment
+
+(*
+    Multi-line comments
+    Useful for temporarily commenting out code sections
+*)
+```
 
 ## Learn more
 
