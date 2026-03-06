@@ -154,7 +154,7 @@ The compiler gives a warning, `warning FS0025: Incomplete pattern matches on thi
 ### Conditionals
 
 To control the execution of code based on the result of boolean expressions, an if-else-expression can be used.
-Each branch of the expression must return a value of the same type
+Each branch of the expression must return a value of the same type.
 
 ```fsharp
 let test x = 
