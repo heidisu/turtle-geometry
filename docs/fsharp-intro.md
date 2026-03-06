@@ -4,7 +4,7 @@ F# is a multi-paradigm language with a functional-first mindset. It is strongly 
 
 ## Order of code and files
 
-F# requires files and code within each file to be organised in dependency order. For instance must a function in a file be defined above the place you want to use it.
+F# requires files and code within each file to be organised in dependency order. For instance, a function in a file must be defined above the place where you want to use it.
 
 ## Syntax
 
