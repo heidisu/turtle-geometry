@@ -197,6 +197,6 @@ What is the length of the Hilbert curve of level `n` with size equal one? Start 
 
 ### 💡 Application of the Hilbert curve
 
-The mapping from the line to the two dimensional space given by the Hilbert curve, preserves the locality quite well, which means that points that are close to each other on the line will be close in two dimensional space. This has been used to visualise the utilisation of the IPv4 address space. See [Mapping the whole internet with Hilbert curves](https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve)
+The mapping from the line to the two dimensional space given by the Hilbert curve, preserves the locality quite well, which means that points that are close to each other on the line will be close in two dimensional space. This has been used to visualise the utilisation of the IPv4 address space. See [Mapping the whole internet with Hilbert curves](https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve),
 
 <img src="https://imgs.xkcd.com/comics/map_of_the_internet.jpg" alt="xkcd comic: map of the internet" title="xkcd map of the internet" height="300">
