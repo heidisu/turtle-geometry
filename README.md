@@ -169,7 +169,7 @@ What is the length of a snowflake curve of level `n`, and what area does it encl
 
 The last theme for today is space-filling curves. As the name suggests, these curves pass through every point of a two dimensional region, like the unit square. We will look at the Hilbert curve, named after the German mathematician David Hilbert, who published a [paper (in German)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/hilbert.pdf) about the curve in 1891. The space-filling Hilbert curve is the limit of piecewise linear curves. We will work with these approximation curves, and also refer to them as Hilbert curves.
 
-The Hilbert curve is constructed from recursively divinding a square into four subsquares. At each step, the squares are number such that a square numbered `n` has a common side with the square numbered `n - 1`, and when a square is divided into four new squares in the next iteration, these four squares will be consecutively numbered. The Hilbert curve will at each level pass through the numbered squares in the given order. 
+The Hilbert curve is constructed from recursively dividing a square into four subsquares. At each step, the squares are numbered such that a square numbered `n` has a common side with the square numbered `n - 1`, and when a square is divided into four new squares in the next iteration, these four squares will be consecutively numbered. The Hilbert curve will at each level pass through the numbered squares in the given order.
 
 <p>
 <img src="./docs/imgs/hilbert-0.png" alt="Initial Hilbert curve" title="Initial Hilbert curve" height="200"/>
@@ -179,7 +179,7 @@ The Hilbert curve is constructed from recursively divinding a square into four s
 
 ### ✍️ lHilbert and rHilbert
 
-To make a Hilbert curve we will need two functions, one that gives the commands for traversing from right towards left (`lHilbert`), and one that goes from left to right (`rHilbert`). The functions take `size`and `level` as arguments, and the figures below illustrate how `lHilbert` and `rHilbert` are constructed recursively, by joining curves of one level lower.
+To make a Hilbert curve we will need two functions, one that gives the commands for traversing from right towards left (`lHilbert`), and one that goes from left to right (`rHilbert`). The functions take `size` and `level` as arguments, and the figures below illustrate how `lHilbert` and `rHilbert` are constructed recursively, by joining curves of one level lower.
 
 <p>
 <img src="./docs/imgs/lhilbert.png" alt="lHilbert" title="lHilbert" height="200"/>
@@ -192,7 +192,7 @@ Implement the functions and test them out for different levels.
 
 ### 🧮 Math exercise
 
-What is the length of the Hilbert curve of level `n`with size equal one? Start by finding the length of the Hilbert curve at level `n` as a function of the length of the curve at level `n - 1`. 
+What is the length of the Hilbert curve of level `n` with size equal one? Start by finding the length of the Hilbert curve at level `n` as a function of the length of the curve at level `n - 1`.
 
 ### 💡 Application of the Hilbert curve
 
