@@ -174,7 +174,7 @@ The Hilbert curve is constructed from recursively dividing a square into four su
 
 <p>
 <img src="./docs/imgs/hilbert-0.png" alt="Initial Hilbert curve" title="Initial Hilbert curve" height="200"/>
-<img src="./docs/imgs/hilbert-1.png" alt="Hilbert curve level 1" title="Hilbert curve level 1" height="200"/>
+<img src="./docs/imgs/hilbert-1.png" alt="Hilbert curve level 2" title="Hilbert curve level 2" height="200"/>
 </p>
 
 
