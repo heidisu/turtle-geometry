@@ -200,3 +200,11 @@ What is the length of the Hilbert curve of level `n` with size equal one? Start 
 The mapping from the line to the two dimensional space given by the Hilbert curve, preserves the locality quite well, which means that points that are close to each other on the line will be close in two dimensional space. This has been used to visualise the utilisation of the IPv4 address space. See [Mapping the whole internet with Hilbert curves](https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve).
 
 <img src="https://imgs.xkcd.com/comics/map_of_the_internet.jpg" alt="xkcd comic: map of the internet" title="xkcd map of the internet" height="300">
+
+## 🏁 The end
+
+Congratulations, you have reached the end of the workshop! 🎉 I hope you have enjoyed this little journey with F# and geometry.
+
+If you want to explore more F# or geometry, take a look at the [resource page](./docs/resources.md), where I have collected various resources, maybe the can be useful next steps in your journey.
+
+There is also a branch `solutions` with suggestions on how the programming exercises in the workshop can be solved.
