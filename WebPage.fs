@@ -5,14 +5,13 @@ open TurtleGeometry.Core
 open System
 open System.Text
 
-
 let color = "#5d009b"
 
 let svg width height path (xMin, xMax, yMin, yMax) =
-    let strokeWidth = 1
+    let strokeWidth = 1.0
 
     $"""
-    <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{xMin - strokeWidth},{yMin - strokeWidth},{xMax - xMin + 2 * strokeWidth},{yMax - yMin + 2 * strokeWidth}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="%.4f{xMin - strokeWidth},%.4f{yMin - strokeWidth},%.4f{xMax - xMin + 2.0 * strokeWidth},%.4f{yMax - yMin + 2.0 * strokeWidth}">
         <path stroke="{color}" stroke-width="{strokeWidth}" fill="white" vector-effect="non-scaling-stroke" d="{path}">
         </path>
     </svg>
@@ -27,7 +26,7 @@ let rec calculatePath (x, y) (dx, dy) (pathBuilder: StringBuilder) xMin xMax yMi
             let afloat = float a
             let factor = sqrt (afloat * afloat / (dx * dx + dy * dy))
             let newX, newY = (x + factor * dx, y + factor * dy)
-            let newPath = pathBuilder.Append($" L{newX},{newY}")
+            let newPath = pathBuilder.Append($" L%.4f{newX},%.4f{newY}")
 
             calculatePath
                 (newX, newY)
@@ -52,7 +51,7 @@ let rec calculatePath (x, y) (dx, dy) (pathBuilder: StringBuilder) xMin xMax yMi
             let afloat = float a
             let factor = sqrt (afloat * afloat / (dx * dx + dy * dy))
             let newX, newY = (x - factor * dx, y - factor * dy)
-            let newPath = pathBuilder.Append($" M{newX},{newY}")
+            let newPath = pathBuilder.Append($" M%.4f{newX},%.4f{newY}")
 
             calculatePath
                 (newX, newY)
@@ -67,10 +66,11 @@ let rec calculatePath (x, y) (dx, dy) (pathBuilder: StringBuilder) xMin xMax yMi
 let turtleToSvgPath turtlePath =
     let stringBuilder = new StringBuilder()
 
-    let pathBuilder, (xMin, xMax, yMin, yMax) =
+    let pathBuilder, viewBox =
         calculatePath (0.0, 0.0) (0.0, -1.0) (stringBuilder.Append("M0,0")) 0.0 0.0 0.0 0.0 turtlePath
 
-    pathBuilder.ToString(), (int xMin, int xMax, int yMin, int yMax)
+    pathBuilder.ToString(), viewBox
+
 
 let htmlPage turtlePath =
     let path, (xMin, xMax, yMin, yMax) = turtleToSvgPath turtlePath
@@ -82,8 +82,8 @@ let htmlPage turtlePath =
                 h1 [] [ str "Turtle Geometry" ]
                 div [] [ rawText (svg 450 450 path (xMin, xMax, yMin, yMax)) ]
                 div [] [
-                    div [] [ str $"x range: [{xMin}, {xMax}]" ]
-                    div [] [ str $"y range: [{yMin}, {yMax}]" ]
+                    div [] [ str $"x range: [%.2f{xMin}, %.2f{xMax}]" ]
+                    div [] [ str $"y range: [%.2f{yMin}, %.2f{yMax}]" ]
                 ]
             ]
         ]
