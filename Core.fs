@@ -135,4 +135,4 @@ let rec pathLenght lst acc =
         dist + pathLenght xs acc
 
 // the turtle commands used to create svg on web page
-let webPagePath = rHilbert 10 1
+let webPagePath = snowflake 10000 7
