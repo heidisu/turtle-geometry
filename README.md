@@ -205,6 +205,6 @@ The mapping from the line to the two dimensional space given by the Hilbert curv
 
 Congratulations, you have reached the end of the workshop! 🎉 I hope you have enjoyed this little journey with F# and geometry.
 
-If you want to explore more F# or geometry, take a look at the [resource page](./docs/resources.md), where I have collected various resources, maybe the can be useful next steps in your journey.
+If you want to explore more F# or geometry, take a look at the [resource page](./docs/resources.md), where I have collected various resources, maybe they can be useful next steps in your journey.
 
 There is also a branch `solutions` with suggestions on how the programming exercises in the workshop can be solved.
