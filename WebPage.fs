@@ -11,8 +11,8 @@ let svg width height path (xMin, xMax, yMin, yMax) =
     let strokeWidth = 1.0
 
     $"""
-    <svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="%.4f{xMin - strokeWidth},%.4f{yMin - strokeWidth},%.4f{xMax - xMin + 2.0 * strokeWidth},%.4f{yMax - yMin + 2.0 * strokeWidth}">
-        <path stroke="{color}" stroke-width="{strokeWidth}" fill="white" vector-effect="non-scaling-stroke" d="{path}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="%i{width}" height="%i{height}" viewBox="%.4f{xMin - strokeWidth},%.4f{yMin - strokeWidth},%.4f{xMax - xMin + 2.0 * strokeWidth},%.4f{yMax - yMin + 2.0 * strokeWidth}">
+        <path stroke="%s{color}" stroke-width="%.1f{strokeWidth}" fill="white" vector-effect="non-scaling-stroke" d="%s{path}">
         </path>
     </svg>
 """
@@ -26,12 +26,12 @@ let rec calculatePath (x, y) (dx, dy) (pathBuilder: StringBuilder) xMin xMax yMi
             let afloat = float a
             let factor = sqrt (afloat * afloat / (dx * dx + dy * dy))
             let newX, newY = (x + factor * dx, y + factor * dy)
-            let newPath = pathBuilder.Append($" L%.4f{newX},%.4f{newY}")
+            pathBuilder.Append($" L%.4f{newX},%.4f{newY}") |> ignore
 
             calculatePath
                 (newX, newY)
                 (dx, dy)
-                newPath
+                pathBuilder
                 (min xMin newX)
                 (max xMax newX)
                 (min yMin newY)
@@ -51,12 +51,12 @@ let rec calculatePath (x, y) (dx, dy) (pathBuilder: StringBuilder) xMin xMax yMi
             let afloat = float a
             let factor = sqrt (afloat * afloat / (dx * dx + dy * dy))
             let newX, newY = (x - factor * dx, y - factor * dy)
-            let newPath = pathBuilder.Append($" M%.4f{newX},%.4f{newY}")
+            pathBuilder.Append($" M%.4f{newX},%.4f{newY}") |> ignore
 
             calculatePath
                 (newX, newY)
                 (dx, dy)
-                newPath
+                pathBuilder
                 (min xMin newX)
                 (max xMax newX)
                 (min yMin newY)
