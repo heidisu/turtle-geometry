@@ -49,17 +49,21 @@ let turtleToSvgPath turtlePath =
     let path, xVals, yVals =
         calculatePath (0.0, 0.0) (0.0, -1.0) "M0,0" [ 0.0 ] [ 0.0 ] turtlePath
 
-    path, (int <| List.min xVals, int <| List.max xVals, int <| List.min yVals, int <| List.max yVals)
+    path, (xVals |> List.min |> int, xVals |> List.max |> int, yVals |> List.min |> int, yVals |> List.max |> int)
 
 let htmlPage turtlePath =
-    let path, viewBox = turtleToSvgPath turtlePath
+    let path, ((xMin, xMax, yMin, yMax) as viewBox) = turtleToSvgPath turtlePath
 
     html [] [
         head [] [ title [] [ str "Turtle Geometry" ] ]
-        body [] [
+        body [attr "style" $"color: {color}" ] [
             div [ attr "align" "center" ] [
-                h1 [ attr "style" $"color: {color}" ] [ str "Turtle Geometry" ]
+                h1 [] [ str "Turtle Geometry" ]
                 div [] [ rawText (svg 450 450 path viewBox) ]
+                div [] [
+                    div [] [ str $"x range: [{xMin}, {xMax}]" ]
+                    div [] [ str $"y range: [{yMin}, {yMax}]" ]
+                ]
             ]
         ]
     ]

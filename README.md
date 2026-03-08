@@ -2,6 +2,12 @@
 
 This workshop is based on content from the first two chapters of [Turtle Geometry: The Computer as a Medium for Exploring Mathematics](https://direct.mit.edu/books/oa-monograph/4663/Turtle-GeometryThe-Computer-as-a-Medium-for) by Harold Abelson and Andrea diSessa.
 
+<p>
+<img src="./docs/imgs/poly-501.png" alt="Polygon" title="Polygon" height="200"/>
+<img src="./docs/imgs/snowflake.png" alt="Snowflake" title="Snowflake" height="200"/>
+<img src="./docs/imgs/hilbert-5.png" alt="Hilbert curve" title="Hilbert curve" height="200"/>
+</p>
+
 ## 🚀 Getting started
 
 Make sure you have .NET 10 SDK installed by running `dotnet --version` in the terminal. The .NET 10 SDK can be downloaded from https://dotnet.microsoft.com/en-us/download. 
@@ -26,7 +32,9 @@ A turtle is a small animal moving around in a plane. The turtle doesn't move ran
 
 The four simple commands we will be using are `Forward`, `Left`, `Right` and `Back`, and they all take an integer as input. For forward and back, the integer is the distance the turtle should move, for left and right, it is the degrees the turtle should rotate. The forward command will cause the turtle to leave a trace the distance it moved, while back does not. Forward and back change the turtle's position, while left and right change the direction of the turtle.
 
-In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of  `TurtleCommand`, which each are a complete set of the commands the turtle needs to create a specific path. To put together the commands, we will create various functions, some will be building blocks for larger functions, while others are recursive.
+In our program we will be most interested in the commands, and less interested in how the turtle executes them, the effect of the commands. We will work with lists of `TurtleCommand`, each of which is a complete set of the commands the turtle must be told to create a specific path. To put together the commands, we will create various functions, some will be building blocks for larger functions, while others are recursive.
+
+What we do need to know about the drawing, however, is that the turtle's initial position is at (0,0), heading upwards, and the path is scaled to fit the SVG size.  
 
 ## ♯ What is F#?
 
@@ -44,18 +52,18 @@ The F# interactive can be useful when working with functions, to test that they 
 
 ## 🏗️ The workshop
 
-The workshop consists of three parts:
-* [🟥 Part 1: Polygons](#-part-1-polygons) - Make polygons and get familiar with lists and functions 
-* Part 1B - A small detour with circles. The part can be skipped
-* [🪾 Part 2: Growth and recursion](#-part-2-growth-and-recursion) - More recursion to make trees, snowflakes and Hilbert curves
+The workshop consists of the following parts:
+* [🟥 Part 1: Polygons](#-part-1-polygons) - Get familiar with lists and functions 
+* [🌳 Part 2: Trees](#-part-2-trees)
+* [❄️ Part 3: Snowflakes](#️-part-3-snowflakes)
+* [🚀 Part 4: Space-filling curves](#-part-4-space-filling-curves)
 
 If you have got the project running by following the steps in the [Getting started](#-getting-started) section, you are ready to start on [Part 1](#-part-1-polygons). You can read and follow the instructions at your own pace. We might also look at some topics together in the group. Don't hesitate to ask questions or share thoughts and ideas!
 
 Some of the emojis are used to mark different types of content:
-* ✍️ = A programming task to do, other tasks in the same part might depend on them
-* 🎨 = Contains suggestions to explore something further, can be skipped
-* 💡 = Describes a result, like a theorem
-* 🧮 = A theoretical exercise, can be skipped
+* ✍️ = A programming task to do, other tasks might depend on them
+* 🎨 = Suggestions for further explorations, explore as much or little as you like
+* 🧮 = A more theoretical exercise, skip if it doesn't interest you
 
 Spend time on the parts you find entertaining, whether it is to play with turtle designs or fiddle with F#. Follow your own ideas, and don't let the instructions limit you. The most important thing is to have fun! 🎉
 
@@ -73,9 +81,9 @@ Experiment with the square, the triangle and the basic turtle commands. Combine 
 
 Both `square` and `triangle` seem to repeat two commands, four and three times respectively. It might be nice to have a function `repeat` to do the repetitions for us, so let's make it. 
 
-The function should take two arguments, an integer `count` for the number of repetitions,  and a list `commands`, the commands we want to repeat. The first part of the function declaration should look like `let repeat count commands =`, then followed by what should be the function body. Functions are let-expressions, just like for values, and the function arguments follows after the function name, without parenthesis around. (`(count, commands)` is a tuple in F#). 
+The function should take two arguments, an integer `count` for the number of repetitions,  and a list `commands`, the commands we want to repeat. The first part of the function declaration should look like `let repeat count commands =`, then followed by what should be the function body.
 
-The function body can be implemented in (at least) two ways. The easiest way is probably to use the functions `List.replicate` and `List.collect`, available from the [List module](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-collections-listmodule.html). Replicate will make a list with the input repeated n times. The result of this will be of type list of list, since our initial input is a list of turtle commands. Collect will flatten the list, and make the elements of the inner list as separate elements of the result list. Collect needs a mapping function as argument, in our case it should be the identity function `id`.
+The function body can be implemented in (at least) two ways. The easiest way is probably to use the functions `List.replicate` and `List.collect`, available from the [List module](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-collections-listmodule.html). Replicate will make a list with the input repeated n times. The result of this will be of type list of list, since our initial input is a list of turtle commands. Collect will flatten the list, and make the elements of the inner list as separate elements of the result list. Collect needs a mapping function as argument, in our case it should be the identity function `id`. The pipe operator `|>` can be use to chain the function calls.
 
 Another way to implement `repeat` is by making a recursive helper function, that keeps track of the remaining repetitions and the accumulated result. The function should test if the counter is zero, then it should return the result, otherwise it should join the result with the input list, and then call itself with the counter decreased, and the accumulated result as the joined list. For this recursive function you will need to know that it must be declared with `let rec <function name>`, in order to be able to call itself, and that two lists can be joined with the `@` operator.
 
@@ -89,7 +97,7 @@ This function will make the turtle create some cool paths. Experiment with diffe
 
 ❓ When is a path complete so that the turtle walks the same pattern multiple times? When does a path not repeat itself within the limit of 500 repetitions? 
 
-### 💡Poly closing theorem
+### 💡 Poly closing theorem
 
 > The path the turtle walks when given the commands produced by `poly` will be closed when the total turning is a multiple of 360
 
@@ -103,7 +111,7 @@ Make an improved version of `poly`, the book calls it `polystop`, that uses the 
 
 Test how this new function works, but keep in mind that the web page might stop working if the paths get too long.
 
-## 🪾 Part 2: Growth and recursion
+## 🌳 Part 2: Trees
 
 Now that we have got the hang of recursion, let's do even more! 
 It turns out that the turtle is good at fractal patterns. 
@@ -121,15 +129,74 @@ Think about how this function should work. If level equals 1 the turtle should j
 
 See how the trees produced by `branch` look for different values of level.
 
-### 🎨 Experiments
+### 🎨 Experiment
 
 Since the turtle will have returned to the start of the tree when it is finished, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotating some degrees in the same direction between each tree, or make them into an avenue. 
 
 If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left branch or a right branch. 
 
-### 🧮 Math
+### 🧮 Math exercise
 
 What is the total length of the lines drawn by the turtle? 
 
+## ❄️ Part 3: snowflakes
+
+Another nice fractal pattern is the snowflake. The ground shape is an equilateral triangle, but instead of straight lines as sides, the sides can recursively be split in three segments of equal length. The first and last segments are kept, but the middle segment is replaced by two segments of same length, such that they would form an equilateral triangle with the segment we are replacing.
+
+<img src="./docs/imgs/snowflake-construction.png" alt="Snowflake construction" title="Snowflake construction"/>
+
+This pattern can of course be repeated recursively, and that is how the snowflake is made. 
+
+### ✍️ Snowflake
+
+Start by making the function `snowflake` with the parameters `size` and `level`, for the length of the sides and the level of recursion, and the function body can initially be similar to the `triangle` list, after we rewrote it to use the [repeat](#%EF%B8%8F-repeat) function. 
+
+Then the `Forward` instruction have to be replaced by a function that recursively make the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration.
+
+Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`. This is a difference from the branch function that was state transparent, and did nothing at level zero. Snowflake does not change the heading, but it changes the position. 
+
+Test the snowflake function with different sizes and levels. Is it really necessary to divide the size by three?
+
+### 🎨 Experiment
+
+Make a similar pattern with a square as the basis. 
 
 
+### 🧮 Math exercise
+
+What is the length of a snowflake curve of level `n`, and what area does it enclose? What happens as `n` approaches infinity?
+
+## 🚀 Part 4: Space-filling curves
+
+The last theme for today is space-filling curves. As the name suggests, these curves pass through every point of a two dimensional region, like the unit square. We will look at the Hilbert curve, named after the German mathematician David Hilbert, who published a [paper (in German)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/hilbert.pdf) about the curve in 1891. The space-filling Hilbert curve is the limit of piecewise linear curves. We will work with these approximation curves, and also refer to them as Hilbert curves.
+
+The Hilbert curve is constructed from recursively dividing a square into four subsquares. At each step, the squares are numbered such that a square numbered `n` has a common side with the square numbered `n - 1`, and when a square is divided into four new squares in the next iteration, these four squares will be consecutively numbered. The Hilbert curve will at each level pass through the numbered squares in the given order.
+
+<p>
+<img src="./docs/imgs/hilbert-0.png" alt="Initial Hilbert curve" title="Initial Hilbert curve" height="200"/>
+<img src="./docs/imgs/hilbert-1.png" alt="Hilbert curve level 2" title="Hilbert curve level 2" height="200"/>
+</p>
+
+
+### ✍️ lHilbert and rHilbert
+
+To make a Hilbert curve we will need two functions, one that gives the commands for traversing from right towards left (`lHilbert`), and one that goes from left to right (`rHilbert`). The functions take `size` and `level` as arguments, and the figures below illustrate how `lHilbert` and `rHilbert` are constructed recursively, by joining curves of one level lower.
+
+<p>
+<img src="./docs/imgs/lhilbert.png" alt="lHilbert" title="lHilbert" height="200"/>
+<img src="./docs/imgs/rhilbert.png" alt="rHilbert" title="rHilbert" height="200"/>
+</p>
+
+It seems like we have run into a F# problem then. The two functions depend on each other, while in F# you cannot reference anything that isn't defined before you want to use it. But there is a solution, the keyword `and` is there for mutually recursive bindings. So use `and` instead of `let rec` for the second function.
+
+Implement the functions and test them out for different levels.
+
+### 🧮 Math exercise
+
+What is the length of the Hilbert curve of level `n` with size equal one? Start by finding the length of the Hilbert curve at level `n` as a function of the length of the curve at level `n - 1`.
+
+### 💡 Application of the Hilbert curve
+
+The mapping from the line to the two dimensional space given by the Hilbert curve, preserves the locality quite well, which means that points that are close to each other on the line will be close in two dimensional space. This has been used to visualise the utilisation of the IPv4 address space. See [Mapping the whole internet with Hilbert curves](https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve).
+
+<img src="https://imgs.xkcd.com/comics/map_of_the_internet.jpg" alt="xkcd comic: map of the internet" title="xkcd map of the internet" height="300">
