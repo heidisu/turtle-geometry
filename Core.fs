@@ -166,4 +166,4 @@ let rec pathLenght lst acc =
         dist + pathLenght xs acc
 
 // the turtle commands used to create svg on web page
-let webPagePath = branch' 20 20 LeftBranch 7
+let webPagePath = lHilbert 20 5
