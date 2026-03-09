@@ -159,7 +159,7 @@ Test the snowflake function with different sizes and levels. Is it necessary to 
 
 ### 🎨 Experiment
 
-Make a similar pattern with the square as the basis. 
+Make a similar pattern with a square as the basis. 
 
 
 ### 🧮 Math exercise
