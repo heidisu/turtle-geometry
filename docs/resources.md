@@ -3,7 +3,7 @@
 ## F#
 
 * [School of .NET](https://github.com/nrkno/dotnetskolen/blob/main/README_EN.md) - A workshop in F# that teaches you how to make a proper API with test projects, API contracts, and domain driven design.
-* [F# for Fun and Profit](https://fsharpforfunandprofit.com) - Scott Wlashin's amazing web page on everything F#, from beginner to advanced topics. He has also written the great book [Domain Modeling Made Functional](https://fsharpforfunandprofit.com/books/), and has given many [presentations](https://fsharpforfunandprofit.com/video/) on F#.
+* [F# for Fun and Profit](https://fsharpforfunandprofit.com) - Scott Wlaschin's amazing web page on everything F#, from beginner to advanced topics. He has also written the great book [Domain Modeling Made Functional](https://fsharpforfunandprofit.com/books/), and has given many [presentations](https://fsharpforfunandprofit.com/video/) on F#.
  
 ## Turtle geometry
 
@@ -13,7 +13,7 @@
 
 ## Turtle geometry in F#
 
-* Scott Wlashin has written a blog post series on [13 ways of looking at a turtle](https://fsharpforfunandprofit.com/posts/13-ways-of-looking-at-a-turtle/).
+* Scott Wlaschin has written a blog post series on [13 ways of looking at a turtle](https://fsharpforfunandprofit.com/posts/13-ways-of-looking-at-a-turtle/).
 
 ## Hilbert curve
 
