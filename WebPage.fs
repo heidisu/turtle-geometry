@@ -11,7 +11,7 @@ let svg width height path (xMin, xMax, yMin, yMax) =
     let strokeWidth = 1.0
 
     $"""
-    <svg xmlns="http://www.w3.org/2000/svg" width="%i{width}" height="%i{height}" viewBox="%.4f{xMin - strokeWidth},%.4f{yMin - strokeWidth},%.4f{xMax - xMin + 2.0 * strokeWidth},%.4f{yMax - yMin + 2.0 * strokeWidth}">
+    <svg xmlns="http://www.w3.org/2000/svg" style="background-color:white" width="%i{width}" height="%i{height}" viewBox="%.4f{xMin - strokeWidth},%.4f{yMin - strokeWidth},%.4f{xMax - xMin + 2.0 * strokeWidth},%.4f{yMax - yMin + 2.0 * strokeWidth}">
         <path stroke="%s{color}" stroke-width="%.1f{strokeWidth}" fill="white" vector-effect="non-scaling-stroke" d="%s{path}">
         </path>
     </svg>
