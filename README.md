@@ -109,35 +109,35 @@ One of the proofs of the theorem sketched in the book is based on the property t
 
 Make an improved version of `poly`, the book calls it `polystop`, that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360. This function will need a recursive helper function, which keeps track of the total turning and the accumulated turtle commands, and returns the commands when the total turning is a multiple of 360. You might want to use the operator `%` that returns the remainder of dividing the first integer argument by the second.
 
-Test how this new function works, but keep in mind that the web page might stop working if the paths get too long.
+Test how this new function works for various angles.
 
 ## 🌳 Part 2: Trees
 
 Now that we have got the hang of recursion, let's do even more! 
-It turns out that the turtle is good at fractal patterns. 
+It turns out that the turtle is very good at fractal patterns. 
 
-We will start with a regular binary tree. A tree consists of branches, where each branch has two child branches of half the length, at 45 degrees to the left and right from the top. 
+We will start with a regular binary tree. This tree consists of branches, where each branch has two child branches of half the length, at 45 degrees to the left and right from the top. 
+
+<img src="./docs/imgs/branch-3.png" alt="branches level=3" title="branches level=3" width="200"/>
 
 ### ✍️ Branch
 
 Make the recursive function `branch` that creates the list of turtle commands for making a tree. The function should have `length` and `level` as arguments. 
 If the level equals zero, the function should return an empty list, otherwise it should return a list consisting of moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`.  
 
-Think about how this function should work. If level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back to where it began after each branch. The book calls this property *state-transparency*. To get back to where the turtle started, we have to rotate it a bit left, and use `Back` to send it to where it started.
+Think about how this function should work. If the level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back to where it was before each call to branch. The book calls this property *state-transparency*. To get back to where the turtle started, we have to rotate it a bit left, and use `Back` to send it to where it started.
 
-<img src="./docs/imgs/branch-3.png" alt="branches level=3" title="branches level=3" width="200"/>
-
-See how the trees produced by `branch` look for different values of level.
+See how the trees produced by `branch` look for different values of level. 
 
 ### 🎨 Experiment
 
 Since the turtle will have returned to the start of the tree when it is finished, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotating some degrees in the same direction between each tree, or make them into an avenue. 
 
-If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. It might for instance vary depending on whether it is a left branch or a right branch. 
+If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. The length might for instance vary depending on whether it is a left branch or a right branch. You can for instance create a sum type to distinguish between the left and the right branch, and use it as an argument to the branch function.
 
 ### 🧮 Math exercise
 
-What is the total length of the lines drawn by the turtle? 
+What is the total length of the lines drawn by the turtle with the original branch function? 
 
 ## ❄️ Part 3: snowflakes
 
@@ -151,11 +151,11 @@ This pattern can of course be repeated recursively, and that is how the snowflak
 
 Start by making the function `snowflake` with the parameters `size` and `level`, for the length of the sides and the level of recursion, and the function body can initially be similar to the `triangle` list, after we rewrote it to use the [repeat](#%EF%B8%8F-repeat) function. 
 
-Then the `Forward` instruction have to be replaced by a function that recursively make the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration.
+Then the `Forward` instruction has to be replaced by a function that recursively makes the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration. Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`.
 
-Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`. This is a difference from the branch function that was state transparent, and did nothing at level zero. Snowflake does not change the heading, but it changes the position. 
+The function `side` behaves differently from the branch function that was state transparent, and did nothing at level zero. `side` does not change the heading, but it changes the position.
 
-Test the snowflake function with different sizes and levels. Is it really necessary to divide the size by three?
+Test the snowflake function with different sizes and levels. Is it necessary to divide the size by three?
 
 ### 🎨 Experiment
 
