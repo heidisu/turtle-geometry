@@ -40,19 +40,50 @@ let triangle' = repeat' 3 [ Forward 20; Right 120 ]
 let poly side angle =
     repeat 500 [ Forward side; Right angle ]
 
+let polystop side angle =
+    let rec loop totalTurning result =
+        if totalTurning > 0 && totalTurning % 360 = 0 then
+            result
+        else
+            loop (angle + totalTurning) (result @ [ Forward side; Right angle ])
+
+    loop 0 []
+
 // Part 2: Trees
 
 let rec branch length level =
     if level = 0 then
         []
     else
+        let subBranch = branch (length / 2) (level - 1)
+
         [ Forward length; Left 45 ]
-        @ branch (length / 2) (level - 1)
+        @ subBranch
         @ [ Right 90 ]
-        @ branch (length / 2) (level - 1)
+        @ subBranch
         @ [ Left 45; Back length ]
 
 let tree = branch 1000 10
+
+// Tree experiment
+type Branch =
+    | LeftBranch
+    | RightBranch
+
+let rec branch' length angle branchType level =
+    if level = 0 then
+        []
+    else
+        let newLength =
+            match branchType with
+            | LeftBranch -> 2 * length
+            | RightBranch -> length
+
+        [ Forward newLength; Left angle ]
+        @ branch' length angle LeftBranch (level - 1)
+        @ [ Right <| 2 * angle ]
+        @ branch' length angle RightBranch (level - 1)
+        @ [ Left angle; Back newLength ]
 
 // Part 3: Snowflake
 
@@ -135,4 +166,4 @@ let rec pathLenght lst acc =
         dist + pathLenght xs acc
 
 // the turtle commands used to create svg on web page
-let webPagePath = lHilbert 10 4
+let webPagePath = branch' 20 20 LeftBranch 7
