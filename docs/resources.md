@@ -2,7 +2,7 @@
 
 ## F#
 
-* [School of .NET](https://github.com/nrkno/dotnetskolen/blob/main/README_EN.md) - A workshop in F# that learns you how to make a proper API with test projects, API contracts, and domain driven design.
+* [School of .NET](https://github.com/nrkno/dotnetskolen/blob/main/README_EN.md) - A workshop in F# that teaches you how to make a proper API with test projects, API contracts, and domain driven design.
 * [F# for Fun and Profit](https://fsharpforfunandprofit.com) - Scott Wlashin's amazing web page on everything F#, from beginner to advanced topics. He has also written the great book [Domain Modeling Made Functional](https://fsharpforfunandprofit.com/books/), and has given many [presentations](https://fsharpforfunandprofit.com/video/) on F#.
  
 ## Turtle geometry
