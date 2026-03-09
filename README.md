@@ -133,7 +133,7 @@ See how the trees produced by `branch` look for different values of level.
 
 Since the turtle will have returned to the start of the tree when it is finished, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotating some degrees in the same direction between each tree, or make them into an avenue. 
 
-If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. The lenght might for instance vary depending on whether it is a left branch or a right branch. You can for instance use a sum type as a flag for the branch function to make it distinguish between the left and the right branch.
+If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. The length might for instance vary depending on whether it is a left branch or a right branch. You can for instance create a sum type to distinguish between the left and the right branch, and use it as an argument to the branch function.
 
 ### 🧮 Math exercise
 
@@ -151,9 +151,9 @@ This pattern can of course be repeated recursively, and that is how the snowflak
 
 Start by making the function `snowflake` with the parameters `size` and `level`, for the length of the sides and the level of recursion, and the function body can initially be similar to the `triangle` list, after we rewrote it to use the [repeat](#%EF%B8%8F-repeat) function. 
 
-Then the `Forward` instruction have to be replaced by a function that recursively make the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration. Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`. 
+Then the `Forward` instruction has to be replaced by a function that recursively makes the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration. Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`.
 
-The function `side` behaves differentfrom the branch function that was state transparent, and did nothing at level zero. `side` does not change the heading, but it changes the position. 
+The function `side` behaves differently from the branch function that was state transparent, and did nothing at level zero. `side` does not change the heading, but it changes the position.
 
 Test the snowflake function with different sizes and levels. Is it necessary to divide the size by three?
 
