@@ -153,17 +153,5 @@ and rHilbert size level =
         @ lHilbert size (level - 1)
         @ [ Right 90 ]
 
-
-let rec pathLenght lst acc =
-    match lst with
-    | [] -> acc
-    | x :: xs ->
-        let dist =
-            match x with
-            | Forward d -> d
-            | _ -> 0
-
-        dist + pathLenght xs acc
-
 // the turtle commands used to create svg on web page
 let webPagePath = lHilbert 20 5
