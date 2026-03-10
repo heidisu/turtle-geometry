@@ -114,7 +114,7 @@ Test how this new function works for various angles.
 ## 🌳 Part 2: Trees
 
 Now that we have got the hang of recursion, let's do even more! 
-It turns out that the turtle is very good at fractal patterns. 
+It turns out that the turtle is very good at fractal patterns. Fractals are recursive patterns that have are self-similar. If you zoom in and look at a part of the fractal, it will have the same shape as the whole.
 
 We will start with a regular binary tree. This tree consists of branches, where each branch has two child branches of half the length, at 45 degrees to the left and right from the top. 
 
@@ -137,7 +137,7 @@ If you want to make more realistic looking trees you can experiment with the ang
 
 ### 🧮 Math exercise
 
-What is the total length of the lines drawn by the turtle with the original branch function? 
+What is the total length of the lines drawn by the turtle with the original branch function?
 
 ## ❄️ Part 3: snowflakes
 
