@@ -1,0 +1,17 @@
+<svg width="50.5" height="50.5" xmlns="http://www.w3.org/2000/svg" style="background-color:white">
+  <defs>
+    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="gray" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="10" y="10" width="10" height="10" />
+        <rect x="10" y="20" width="10" height="10" />
+        <rect x="10" y="30" width="10" height="10" />
+        <rect x="20" y="10" width="10" height="10" />
+        <rect x="20" y="30" width="10" height="10" />
+        <rect x="30" y="10" width="10" height="10" />
+        <rect x="30" y="30" width="10" height="10" />
+        
+  <rect width="50.5" height="50.5" fill="url(#grid)" />
+</svg>
+    
