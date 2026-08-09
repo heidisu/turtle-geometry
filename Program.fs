@@ -23,7 +23,7 @@ let main _ =
     Host
         .CreateDefaultBuilder()
         .ConfigureWebHostDefaults(fun webHostBuilder ->
-            webHostBuilder.Configure(configureApp).ConfigureServices(configureServices).UseUrls("http://*:5000")
+            webHostBuilder.Configure(configureApp).ConfigureServices(configureServices).UseUrls("http://*:3030")
             |> ignore)
         .Build()
         .Run()
