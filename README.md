@@ -15,7 +15,7 @@ Make sure you have .NET 10 SDK installed by running `dotnet --version` in the te
 1. Clone the repository
 1. Run `dotnet restore` from the project root the first time
 1. Run `dotnet watch run`. This will run the app and automatically rebuild the app when you make changes in the code
-1. Navigate to <http://localhost:5000> in your browser
+1. Navigate to <http://localhost:3030> in your browser
 1. If you see a square you are good to go! 
 
 ### Editor
