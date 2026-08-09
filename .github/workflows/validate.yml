@@ -14,3 +14,18 @@ jobs:
         dotnet-version: '10.0.x'
     - run: dotnet tool restore
     - run: dotnet fantomas -r --check .
+    - name: Run app
+      run: dotnet run &
+    - name: Verify site is answering
+      run: |
+        echo "Waiting for app to start..."
+        for i in {1..15}; do
+          if curl -s -o /dev/null -w "%{http_code}" http://localhost:3030 | grep -q "200"; then
+            echo "App is up and running!"
+            exit 0
+          fi
+          echo "Retrying in 2 seconds..."
+          sleep 2
+        done
+        echo "Error: App failed to start within 30 seconds."
+        exit 1
