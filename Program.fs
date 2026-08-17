@@ -12,15 +12,15 @@ open System
 
 let turtleHandler: HttpHandler =
     fun (next: HttpFunc) (ctx: HttpContext) ->
-        let showArrow =
-            match ctx.TryGetQueryStringValue "arrow" with
+        let showDirection =
+            match ctx.TryGetQueryStringValue "showDirection" with
             | None -> false
-            | Some arrow ->
-                match Boolean.TryParse arrow with
+            | Some showDirection ->
+                match Boolean.TryParse showDirection with
                 | true, value -> value
                 | false, _ -> false
 
-        htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage webPagePath showArrow)) next ctx
+        htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage webPagePath showDirection)) next ctx
 
 let webApp = choose [ route "/" >=> turtleHandler ]
 

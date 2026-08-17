@@ -91,14 +91,22 @@ let getArrowPath pos dir scaleFactor =
 
     arrow
 
-let getSvg width height pos dir path viewBox showArrow =
+let getSvg width height pos dir path viewBox showDirection =
     let turtleWidth = viewBox.XRange.Max - viewBox.XRange.Min
     let turtleHeight = viewBox.YRange.Max - viewBox.YRange.Min
+    let floatWidth = float width
+    let floatHeight = float height
 
     let scaleFactor =
-        max (max (turtleHeight / float height) (turtleWidth / float width)) 0.01
+        max
+            (max (turtleHeight / floatHeight) (turtleWidth / floatWidth))
+            (2.0 * strokeWidth / max floatWidth floatHeight)
 
-    let arrow = if showArrow then getArrowPath pos dir scaleFactor else ""
+    let arrowPath =
+        if showDirection then
+            getArrowPath pos dir scaleFactor
+        else
+            ""
 
     $"""
     <svg xmlns="http://www.w3.org/2000/svg" 
@@ -108,12 +116,12 @@ let getSvg width height pos dir path viewBox showArrow =
         width="%i{width}" 
         height="%i{height}" 
         viewBox="%.4f{viewBox.XRange.Min - strokeWidth},%.4f{viewBox.YRange.Min - strokeWidth},%.4f{turtleWidth + 2.0 * strokeWidth},%.4f{turtleHeight + 2.0 * strokeWidth}">
-        {arrow}
+        {arrowPath}
         <path stroke="%s{color}" stroke-width="%.1f{strokeWidth}" fill="white" fill-opacity=0.0 vector-effect="non-scaling-stroke" d="%s{path}"/>
     </svg>
 """
 
-let htmlPage turtlePath showArrow =
+let htmlPage turtlePath showDirection =
     let pos, dir, path, viewBox = turtleToSvgPath turtlePath
 
     html [] [
@@ -121,7 +129,7 @@ let htmlPage turtlePath showArrow =
         body [ attr "style" $"color: {color}" ] [
             div [ attr "align" "center" ] [
                 h1 [] [ str "Turtle Geometry" ]
-                div [] [ rawText (getSvg 450 450 pos dir path viewBox showArrow) ]
+                div [] [ rawText (getSvg 450 450 pos dir path viewBox showDirection) ]
                 div [] [
                     div [] [ str $"x range: [%.2f{viewBox.XRange.Min}, %.2f{viewBox.XRange.Max}]" ]
                     div [] [ str $"y range: [%.2f{viewBox.YRange.Min}, %.2f{viewBox.YRange.Max}]" ]
