@@ -50,6 +50,16 @@ If you are using VS Code you can select code in a `.fs` file and send the select
 
 The F# interactive can be useful when working with functions, to test that they behave as they should, without having to wait for code to rebuild.
 
+## ↗️ In the browser
+
+This workshop is exploratory, so you will often try something in the code and then inspect the result in the browser. A couple of things to note:
+
+* The command `dotnet watch run` rebuilds the application when the code changes, but you still have to reload the browser to see the result
+* The query parameter `showDirection` can be used to see the turtle's current heading:  <http://localhost:3030/?showDirection=true>
+
+<img src="./docs/imgs/show-direction.png" alt="Turtle direction indicated by an arrow" title="Turtle direction" height="150"/>
+
+
 ## 🏗️ The workshop
 
 The workshop consists of the following parts:
