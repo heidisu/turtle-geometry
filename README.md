@@ -197,7 +197,7 @@ To make a Hilbert curve we will need two functions, one that gives the commands 
 <img src="./docs/imgs/rhilbert.png" alt="rHilbert" title="rHilbert" height="200"/>
 </p>
 
-It seems like we have run into a F# problem then. The two functions depend on each other, while in F# you cannot reference anything that isn't defined before you want to use it. But there is a solution, the keyword `and` is there for mutually recursive bindings. So use `and` instead of `let rec` for the second function.
+It seems like we have run into a F# problem. The two functions depend on each other, while in F# you cannot reference anything that isn't defined before you want to use it. But there is a solution, use the keyword `and` instead of `let rec` for the second function.
 
 Implement the functions and test them out for different levels.
 
