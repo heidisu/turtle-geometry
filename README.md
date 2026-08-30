@@ -55,7 +55,7 @@ The F# interactive can be useful when working with functions, to test that they 
 This workshop is exploratory, so you will often try something in the code and then inspect the result in the browser. A couple of things to note:
 
 * The command `dotnet watch run` rebuilds the application when the code changes, but you still have to reload the browser to see the result
-* The query parameter `showDirection` can be used to see the turtle's current heading:  <http://localhost:3030/?showDirection=true>
+* The query parameter `showDirection` can be used to see the turtle's current direction:  <http://localhost:3030/?showDirection=true>
 
 <img src="./docs/imgs/show-direction.png" alt="Turtle direction indicated by an arrow" title="Turtle direction" height="150"/>
 
@@ -91,7 +91,7 @@ Experiment with the square, the triangle and the basic turtle commands. Combine 
 
 Both `square` and `triangle` seem to repeat two commands, four and three times respectively. It might be nice to have a function `repeat` to do the repetitions for us, so let's make it. 
 
-The function should take two arguments, an integer `count` for the number of repetitions,  and a list `commands`, the commands we want to repeat. The first part of the function declaration should look like `let repeat count commands =`, then followed by what should be the function body.
+The function should take two arguments, an integer `count` for the number of repetitions,  and a list `commands`, the commands we want to repeat, and it should return a list of commands. The first part of the function declaration should look like `let repeat count commands =`, then followed by what should be the function body.
 
 The function body can be implemented in (at least) two ways. The easiest way is probably to use the functions `List.replicate` and `List.collect`, available from the [List module](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-collections-listmodule.html). Replicate will make a list with the input repeated n times. The result of this will be of type list of list, since our initial input is a list of turtle commands. Collect will flatten the list, and make the elements of the inner list as separate elements of the result list. Collect needs a mapping function as argument, in our case it should be the identity function `id`. The pipe operator `|>` can be use to chain the function calls.
 
@@ -101,7 +101,7 @@ When repeat is finished, test that it works by rewriting square and triangle, an
 
 ### ✍️ Poly
 
-Now that we have `repeat` we can generalise `square` and `triangle`, and make a function `poly` that makes the turtle first move forward a given side distance, and then move right a given angle. This pattern repeats until the turtle closes the path it is drawing. We don't know yet when that happens, so for now we will just repeat the the two commands "forever", like 500 times. Make the function `poly` that takes two arguments `side` and `angle`. 
+Now that we have `repeat` we can generalise `square` and `triangle`, and make a function `poly` that makes the turtle first move forward a given side distance, and then move right a given angle. This pattern repeats until the turtle closes the path it is drawing. We don't know yet when that happens, so for now we will just repeat the two commands "forever", like 500 times. Make the function `poly` that takes two arguments `side` and `angle`, and returns a list of commands.
 
 This function will make the turtle create some cool paths. Experiment with different angles: small, large, prime numbers etc. 
 
@@ -113,11 +113,11 @@ This function will make the turtle create some cool paths. Experiment with diffe
 
 The total turning number is how much the turtle turns during a path, adding the degrees to the turning number when moving right, and subtracting the degrees when moving left. 
 
-One of the proofs of the theorem sketched in the book is based on the property that all vertices of a path drawn by `poly` lie on a circle. This property can be proved by using that for three points, not on a line, there is a unique circle passing through them. Then one can use congruent triangles formed by the vertices to show that all the vertices has the same distance to the origin, and thus lie on the circle. With this established, we know that the turtle will walk along chords of equal lengths in this circle. But for any heading of the turtle, there is exactly one possible chord of the required length, so when the turtle reach its initial heading, which occurs when the total turning is a multiple of 360, it must also be at the initial position, and about to trace that first chord again.      
+One of the proofs of the theorem sketched in the book is based on the property that all vertices of a path drawn by `poly` lie on a circle. This property can be proved by using that for three points, not on a line, there is a unique circle passing through them. Then one can use congruent triangles formed by the vertices to show that all the vertices have the same distance to the circle center, and thus lie on the circle. With this established, we know that the turtle will walk along chords of equal lengths in this circle. But for any heading of the turtle, there is exactly one possible chord of the required length, so when the turtle reaches its initial heading, which occurs when the total turning is a multiple of 360, it must also be at the initial position, and about to trace that first chord again.
 
 ### ✍️ Polystop
 
-Make an improved version of `poly`, the book calls it `polystop`, that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360. This function will need a recursive helper function, which keeps track of the total turning and the accumulated turtle commands, and returns the commands when the total turning is a multiple of 360. You might want to use the operator `%` that returns the remainder of dividing the first integer argument by the second.
+Make an improved version of `poly`, the book calls it `polystop`, that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360. This function will need a recursive helper function, which keeps track of the total turning and the accumulated turtle commands. When the total turning is a positive multiple of 360 the helper function should return the accumulated commands. You might want to use the operator `%` that returns the remainder of dividing the first integer argument by the second.
 
 Test how this new function works for various angles.
 
@@ -143,7 +143,7 @@ See how the trees produced by `branch` look for different values of level.
 
 Since the turtle will have returned to the start of the tree when it is finished, it is fun to combine multiple trees in the same path. Experiment with making a chain of trees by rotating some degrees in the same direction between each tree, or make them into an avenue. 
 
-If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. The length might for instance vary depending on whether it is a left branch or a right branch. You can for instance create a sum type to distinguish between the left and the right branch, and use it as an argument to the branch function.
+If you want to make more realistic looking trees you can experiment with the angle between the sibling branches, and the length of each branch. The length might vary depending on whether it is a left branch or a right branch. You can for instance create a sum type to distinguish between the left and the right branch, and use it as an argument to the branch function.
 
 ### 🧮 Math exercise
 
@@ -161,16 +161,15 @@ This pattern can of course be repeated recursively, and that is how the snowflak
 
 Start by making the function `snowflake` with the parameters `size` and `level`, for the length of the sides and the level of recursion, and the function body can initially be similar to the `triangle` list, after we rewrote it to use the [repeat](#%EF%B8%8F-repeat) function. 
 
-Then the `Forward` instruction has to be replaced by a function that recursively makes the pattern in the illustration. We will call this function `side`, it will be recursive, and has the same parameters as `snowflake`.  If the level is zero `side` should return `Forward size`, otherwise it should make the pattern, by calling itself with `size / 3` and `level - 1` where the sides are in the illustration. Notice that if `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`.
+Then the `Forward` command in `snowflake` has to be replaced by a call to a function that recursively makes the pattern in the illustration and returns a list of commands. We will call this function `side`, and it will have the same parameters as `snowflake`.  If the level is zero, `side` should return a list containing `Forward size`, otherwise it should make the pattern in the illustration. The pattern is made by calling `side` with `size / 3` and `level - 1` to produce the four segments, combined with changes in direction between. If `snowflake` is called with `level` zero, and same `size` as in `triangle`, it will be identical to `triangle`.
 
 The function `side` behaves differently from the branch function that was state transparent, and did nothing at level zero. `side` does not change the heading, but it changes the position.
 
-Test the snowflake function with different sizes and levels. Is it necessary to divide the size by three?
+Test the snowflake function with different sizes and levels. Notice that we are doing integer division, so make sure to use a big enough size. Is it necessary to divide the size by three?
 
 ### 🎨 Experiment
 
-Make a similar pattern with a square as the basis. 
-
+Make a similar pattern with a square as the basis. Or the square shaped variant, [Minkowski sausage](https://en.wikipedia.org/wiki/Minkowski_sausage).
 
 ### 🧮 Math exercise
 
@@ -178,9 +177,9 @@ What is the length of a snowflake curve of level `n`, and what area does it encl
 
 ## 🚀 Part 4: Space-filling curves
 
-The last theme for today is space-filling curves. As the name suggests, these curves pass through every point of a two dimensional region, like the unit square. We will look at the Hilbert curve, named after the German mathematician David Hilbert, who published a [paper (in German)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/hilbert.pdf) about the curve in 1891. The space-filling Hilbert curve is the limit of piecewise linear curves. We will work with these approximation curves, and also refer to them as Hilbert curves.
+The last topic for today is space-filling curves. As the name suggests, these curves pass through every point of a two dimensional region, like the unit square. We will look at the Hilbert curve, named after the German mathematician David Hilbert, who published a [paper (in German)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/hilbert.pdf) about the curve in 1891. The space-filling Hilbert curve is the limit of piecewise linear curves. We will work with these approximation curves, and also refer to them as Hilbert curves.
 
-The Hilbert curve is constructed from recursively dividing a square into four subsquares. At each step, the squares are numbered such that a square numbered `n` has a common side with the square numbered `n - 1`, and when a square is divided into four new squares in the next iteration, these four squares will be consecutively numbered. The Hilbert curve will at each level pass through the numbered squares in the given order.
+The Hilbert curve is conceptually constructed by recursively dividing a square into four subsquares. At each step, the squares are numbered such that a square numbered `n` has a common side with the square numbered `n - 1`, and when a square is divided into four new squares in the next iteration, these four squares will be consecutively numbered. The Hilbert curve will at each level pass through the numbered squares in the given order.
 
 <p>
 <img src="./docs/imgs/hilbert-0.png" alt="Initial Hilbert curve" title="Initial Hilbert curve" height="200"/>
@@ -199,7 +198,7 @@ To make a Hilbert curve we will need two functions, one that gives the commands 
 
 It seems like we have run into a F# problem. The two functions depend on each other, while in F# you cannot reference anything that isn't defined before you want to use it. But there is a solution, use the keyword `and` instead of `let rec` for the second function.
 
-Implement the functions and test them out for different levels.
+Implement the functions and test them out for different levels. Level 0 will not move the turtle, level 1 should give the U-shaped path.
 
 ### 🧮 Math exercise
 
