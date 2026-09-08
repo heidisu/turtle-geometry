@@ -169,7 +169,8 @@ Test the snowflake function with different sizes and levels. Notice that we are 
 
 ### 🎨 Experiment
 
-Make a similar pattern with a square as the basis. Or the square shaped variant, [Minkowski sausage](https://en.wikipedia.org/wiki/Minkowski_sausage).
+Make a similar pattern with a square as the basis, or the square-based curve [Minkowski sausage](https://en.wikipedia.org/wiki/Minkowski_sausage).
+The snowflake can also be generalised to any regular polygon of `n` sides. Try to make the functions `polyside` and `polyflake`, that take `n` as argument. `polyside` should recursively replace the middle segment with `n - 1` sides of the polygon. Since our turtle operates with integer angles, `n` must divide 360.
 
 ### 🧮 Math exercise
 
