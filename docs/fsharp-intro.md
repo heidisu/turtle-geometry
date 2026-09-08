@@ -63,6 +63,14 @@ let rec factorial n =
     else n * factorial (n - 1)
 ```
 
+You can also end up with two recursive functions depending on each other, so called mutually recursive functions. This seems like a problem in F# since you cannot reference anything that isn't already defined. However, the solution is to use keyword `and` in the definition of the second function.
+
+```fsharp
+let rec odd n = if n = 0 then false else even (n - 1)
+
+and even n = if n = 0 then true else odd (n - 1)
+```
+
 ### Lists
 
 `List` is one of the collection types in F#, and it is an immutable, singly linked list.
