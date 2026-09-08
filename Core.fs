@@ -104,11 +104,11 @@ let rec side size level =
 let snowflake size level =
     repeat 3 (side size level @ [ Right 120 ])
 
-let rec side' size level =
+let rec squareside size level =
     if level = 0 then
         [ Forward size ]
     else
-        let subSide = side' size (level - 1)
+        let subSide = squareside size (level - 1)
 
         subSide
         @ [ Left 90 ]
@@ -121,7 +121,49 @@ let rec side' size level =
         @ subSide
 
 let squareflake size level =
-    repeat 4 (side' size level @ [ Right 90 ])
+    repeat 4 (squareside size level @ [ Right 90 ])
+
+let rec sausageside size level =
+    if level = 0 then
+        [ Forward size ]
+    else
+        let subside = sausageside (size / 4) (level - 1)
+
+        subside
+        @ [ Left 90 ]
+        @ subside
+        @ [ Right 90 ]
+        @ subside
+        @ [ Right 90 ]
+        @ subside
+        @ subside
+        @ [ Left 90 ]
+        @ subside
+        @ [ Left 90 ]
+        @ subside
+        @ [ Right 90 ]
+        @ subside
+
+let sausageflake size level =
+    repeat 4 ((sausageside size level) @ [ Right 90 ])
+
+let rec polyside size angle n level =
+    if level = 0 then
+        [ Forward size ]
+    else
+        let subside = polyside (size / 3) angle n (level - 1)
+
+        subside
+        @ [ Left(180 - angle) ]
+        @ repeat (n - 2) (subside @ [ Right angle ])
+        @ subside
+        @ [ Left(180 - angle) ]
+        @ subside
+
+let polyflake size n level =
+    let angle = 360 / n
+    let side = polyside size angle n level
+    repeat n (side @ [ Right angle ])
 
 // Part 4: Hilbert curve
 
