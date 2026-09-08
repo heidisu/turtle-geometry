@@ -11,7 +11,7 @@ open TurtleGeometry.Core
 open TurtleGeometry.WebPage
 open System.IO
 
-let svgPath, (xMin, xMax, yMin, yMax) = turtleToSvgPath webPagePath
-let svg = svg 450 450 svgPath (xMin, xMax, yMin, yMax)
+let pos, dir, path, viewBox = turtleToSvgPath webPagePath
+let svg = getSvg 450 450 pos dir path viewBox false
 
 File.WriteAllText("image.svg", svg)
