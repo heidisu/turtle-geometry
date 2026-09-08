@@ -3,7 +3,7 @@
     "dockerfile": "DOCKERFILE"
   },
   "forwardPorts": [
-    5000
+    3030
   ],
   "postCreateCommand": "dotnet restore",
   "customizations": {

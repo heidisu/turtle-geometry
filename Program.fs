@@ -7,12 +7,22 @@ open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Giraffe.ViewEngine
 open TurtleGeometry.Core
+open Microsoft.AspNetCore.Http
+open System
 
-let webApp =
-    choose [
-        route "/"
-        >=> htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage webPagePath))
-    ]
+let turtleHandler: HttpHandler =
+    fun (next: HttpFunc) (ctx: HttpContext) ->
+        let showDirection =
+            match ctx.TryGetQueryStringValue "showDirection" with
+            | None -> false
+            | Some showDirection ->
+                match Boolean.TryParse showDirection with
+                | true, value -> value
+                | false, _ -> false
+
+        htmlString (RenderView.AsString.htmlDocument (WebPage.htmlPage webPagePath showDirection)) next ctx
+
+let webApp = choose [ route "/" >=> turtleHandler ]
 
 let configureApp (app: IApplicationBuilder) = app.UseGiraffe webApp
 
@@ -23,7 +33,7 @@ let main _ =
     Host
         .CreateDefaultBuilder()
         .ConfigureWebHostDefaults(fun webHostBuilder ->
-            webHostBuilder.Configure(configureApp).ConfigureServices(configureServices).UseUrls("http://*:5000")
+            webHostBuilder.Configure(configureApp).ConfigureServices(configureServices).UseUrls("http://*:3030")
             |> ignore)
         .Build()
         .Run()
