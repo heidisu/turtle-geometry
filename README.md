@@ -85,7 +85,7 @@ Our webpage is showing a square, so the natural first step is to make an [equila
 
 ### 🎨 Experiment
 
-Experiment with the square, the triangle and the basic turtle commands. Combine them into something fun!
+Experiment with the square, the triangle and the basic turtle commands. Use list concatenation `@` to combine them into something fun!
 
 ### ✍️ Repeat
 
@@ -95,7 +95,7 @@ The function should take two arguments, an integer `count` for the number of rep
 
 The function body can be implemented in (at least) two ways. The easiest way is probably to use the functions `List.replicate` and `List.collect`, available from the [List module](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-collections-listmodule.html). Replicate will make a list with the input repeated n times. The result of this will be of type list of list, since our initial input is a list of turtle commands. Collect will flatten the list, and make the elements of the inner list as separate elements of the result list. Collect needs a mapping function as argument, in our case it should be the identity function `id`. The pipe operator `|>` can be use to chain the function calls.
 
-Another way to implement `repeat` is by making a recursive helper function, that keeps track of the remaining repetitions and the accumulated result. The function should test if the counter is zero, then it should return the result, otherwise it should join the result with the input list, and then call itself with the counter decreased, and the accumulated result as the joined list. For this recursive function you will need to know that it must be declared with `let rec <function name>`, in order to be able to call itself, and that two lists can be joined with the `@` operator.
+Another way to implement `repeat` is by making a recursive helper function, that keeps track of the remaining repetitions and the accumulated result. The function should test if the counter is zero, then it should return the result, otherwise it should join the result with the input list, and then call itself with the counter decreased, and the accumulated result as the joined lists. You will need to know that the recursive function must be declared with `let rec <function name>`, in order to be able to call itself, and that two lists are joined with the `@` operator.
 
 When repeat is finished, test that it works by rewriting square and triangle, and check that it looks as it should.
 
@@ -119,7 +119,7 @@ One of the proofs of the theorem sketched in the book is based on the property t
 
 Make an improved version of `poly`, the book calls it `polystop`, that uses the poly closing theorem, and stops repeating when the total turning is a multiple of 360. This function will need a recursive helper function, which keeps track of the total turning and the accumulated turtle commands. When the total turning is a positive multiple of 360 the helper function should return the accumulated commands. You might want to use the operator `%` that returns the remainder of dividing the first integer argument by the second.
 
-Test how this new function works for various angles.
+Test how this new function works for various angles. If you enable the direction arrow, do you notice a difference of its position, compared to using `poly`?
 
 ## 🌳 Part 2: Trees
 
