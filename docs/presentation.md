@@ -18,6 +18,12 @@
 
 ---
 
+## The goal 🎯
+
+Have fun and maybe learn some F# and/or geometry
+
+---
+
 ## The workshop
 
 * F#
@@ -40,9 +46,3 @@
 * Ask questions and share ideas
 * We might discuss some topics together. You can follow or continue your own path
 * Use AI as a learning partner
-
----
-
-## The goal 🎯
-
-Have fun and maybe learn some F# and/or geometry
