@@ -117,7 +117,7 @@ let getSvg width height pos dir path viewBox showDirection =
         height="%i{height}" 
         viewBox="%.4f{viewBox.XRange.Min - strokeWidth},%.4f{viewBox.YRange.Min - strokeWidth},%.4f{turtleWidth + 2.0 * strokeWidth},%.4f{turtleHeight + 2.0 * strokeWidth}">
         {arrowPath}
-        <path stroke="%s{color}" stroke-width="%.1f{strokeWidth}" fill="white" fill-opacity=0.0 vector-effect="non-scaling-stroke" d="%s{path}"/>
+        <path stroke="%s{color}" stroke-width="%.1f{strokeWidth}" fill="white" fill-opacity="0.0" vector-effect="non-scaling-stroke" d="%s{path}"/>
     </svg>
 """
 
