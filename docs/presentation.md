@@ -44,5 +44,6 @@ Have fun and maybe learn some F# and/or geometry
 * Spend time on the parts you like, follow your whims
 * Talk to your neighbours, work together if you like
 * Ask questions and share ideas
-* We might discuss some topics together. You can follow or continue your own path
-* Use AI as a learning partner
+* We might discuss some topics together
+    * You can follow or continue your own path
+* Use AI for understanding and learning
