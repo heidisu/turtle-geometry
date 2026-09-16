@@ -133,9 +133,10 @@ We will start with a regular binary tree. This tree consists of branches, where 
 ### ✍️ Branch
 
 Make the recursive function `branch` that creates the list of turtle commands for making a tree. The function should have `length` and `level` as arguments. 
-If the level equals zero, the function should return an empty list, otherwise it should return a list consisting of moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`.  
 
-Think about how this function should work. If the level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back to where it was before each call to branch. The book calls this property *state-transparency*. To get back to where the turtle started, we have to rotate it a bit left, and use `Back` to send it to where it started.
+Think about how this function should work. If the level equals 1 the turtle should just draw a vertical line, if the level is 2, the path is the vertical line, with two branches on the top, of half the length, in 45 degrees left and right from the main branch. The tricky part is that the state of the turtle has to be restored so that the turtle returns back to where it was before each call to branch. The book calls this property *state-transparency*.
+
+If the level equals zero, the function should return an empty list, otherwise it should return a list consisting of moving forward the given `length`, then move 45 degrees left, call branch with `length/2` and `level - 1`, then move right 90 degrees (which will be 45 degrees right of the parent branch), and call branch with `length/2` and `level - 1`. Finally, to get back to where the turtle started, we have to rotate 45 degrees left, and move back `length`.
 
 See how the trees produced by `branch` look for different values of level. 
 
